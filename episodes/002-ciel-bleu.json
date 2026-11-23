@@ -21,7 +21,8 @@
         "recherche": "blue sky clouds",
         "mouvement": "zoom_in",
         "opacite": 0.55,
-        "flou": 8
+        "flou": 8,
+        "fichier": "images/002-ciel-bleu/scene01.jpg"
       },
       "elements": [
         {
@@ -41,7 +42,8 @@
       "image": {
         "recherche": "prism rainbow light",
         "mouvement": "pan_right",
-        "opacite": 0.7
+        "opacite": 0.7,
+        "fichier": "images/002-ciel-bleu/scene02.jpg"
       },
       "elements": [
         {
@@ -56,7 +58,8 @@
         "recherche": "blue sky sun rays",
         "mouvement": "zoom_in",
         "opacite": 0.5,
-        "flou": 8
+        "flou": 8,
+        "fichier": "images/002-ciel-bleu/scene03.jpg"
       },
       "elements": [
         {
@@ -84,7 +87,8 @@
       "image": {
         "recherche": "looking up blue sky trees",
         "mouvement": "zoom_out",
-        "opacite": 0.7
+        "opacite": 0.7,
+        "fichier": "images/002-ciel-bleu/scene04.jpg"
       },
       "elements": [
         {
@@ -98,7 +102,8 @@
       "image": {
         "recherche": "sunset orange sky",
         "mouvement": "pan_left",
-        "opacite": 0.75
+        "opacite": 0.75,
+        "fichier": "images/002-ciel-bleu/scene05.jpg"
       },
       "elements": [
         {
@@ -112,7 +117,8 @@
       "image": {
         "recherche": "sunset clouds",
         "mouvement": "zoom_out",
-        "opacite": 0.6
+        "opacite": 0.6,
+        "fichier": "images/002-ciel-bleu/scene06.jpg"
       },
       "elements": [
         {
@@ -124,7 +130,7 @@
       ]
     }
   ],
-  "statut": "à refaire",
+  "statut": "à valider",
   "video_url": "https://math43290.github.io/tout-savoir-30s/002-ciel-bleu.mp4",
   "consigne": " texte raccourci, photos Pixabay"
 }
