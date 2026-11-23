@@ -116,7 +116,7 @@ jobs:
 
           ---
           Répondez en commentaire :
-          - `/valider` → programmée sur TikTok à 18 h 30
+          - `/valider` → programmée sur TikTok à 21 h (`/valider maintenant` → publiée tout de suite)
           - `/refaire` → refabriquée au prochain passage (vous pouvez ajouter une consigne après le mot)
 
           <!-- episode: {ep['id']} -->""".replace("\n          ", "\n"))

@@ -8,7 +8,7 @@ Une vidéo TikTok par jour (@toutsavoiren30sec), fabriquée et publiée automati
    photos Pixabay → voix ElevenLabs → montage → mise en ligne sur GitHub Pages.
 3. **Vous recevez une notification GitHub** (ticket « À valider ») avec la vidéo.
    Répondez `/valider` ou `/refaire`, depuis l'app GitHub sur votre téléphone par exemple.
-4. **`/valider`** : Buffer la programme sur TikTok à 18 h 30. (Pour ajouter Instagram plus tard : connecter le compte dans Buffer et mettre la variable `RESEAUX` à `tiktok,instagram`.)
+4. **`/valider`** : Buffer la programme sur TikTok à 21 h (`/valider maintenant` pour publier tout de suite). (Pour ajouter Instagram plus tard : connecter le compte dans Buffer et mettre la variable `RESEAUX` à `tiktok,instagram`.)
 
 ## Réglages (une seule fois, dans Settings du dépôt)
 - **Secrets** (Settings → Secrets and variables → Actions → *Secrets*) :

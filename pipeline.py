@@ -3,7 +3,7 @@
 
     python3 pipeline.py suivant                 -> chemin du prochain épisode à fabriquer (vide si rien)
     python3 pipeline.py statut <id> <statut> [clé=valeur ...]
-    python3 pipeline.py prochain-creneau        -> prochaine publication à 18h30 (heure de Paris), en UTC ISO
+    python3 pipeline.py prochain-creneau [maintenant] -> prochaine publication à 21 h (heure de Paris), en UTC ISO
     python3 pipeline.py etat                    -> tableau récapitulatif
 
 Statuts : à faire -> à valider -> validé/publié ; « à refaire » repasse en tête de file.
@@ -12,7 +12,7 @@ import datetime as dt, glob, json, os, sys
 from zoneinfo import ZoneInfo
 
 MAX_EN_ATTENTE = 3          # pas plus de 3 vidéos en attente de validation
-HEURE_PUBLICATION = (18, 30)
+HEURE_PUBLICATION = (21, 0)     # tous les soirs à 21 h (heure de Paris)
 
 
 def episodes():
@@ -37,9 +37,11 @@ def suivant():
     return ""
 
 
-def prochain_creneau():
+def prochain_creneau(maintenant=False):
     paris = ZoneInfo("Europe/Paris")
     now = dt.datetime.now(paris)
+    if maintenant:                      # « /valider maintenant » : dans 3 minutes
+        return (now + dt.timedelta(minutes=3)).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     t = now.replace(hour=HEURE_PUBLICATION[0], minute=HEURE_PUBLICATION[1], second=0, microsecond=0)
     if t < now + dt.timedelta(minutes=20):
         t += dt.timedelta(days=1)
@@ -51,7 +53,7 @@ def main():
     if cmd == "suivant":
         print(suivant())
     elif cmd == "prochain-creneau":
-        print(prochain_creneau())
+        print(prochain_creneau(len(sys.argv) > 2 and sys.argv[2] == "maintenant"))
     elif cmd == "statut":
         ident, statut = sys.argv[2], sys.argv[3]
         p = f"episodes/{ident}.json"
