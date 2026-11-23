@@ -33,15 +33,26 @@ jobs:
           cache: pip
 
       - if: steps.ep.outputs.path != ''
+        name: Cache des paquets système
+        uses: actions/cache@v4
+        with:
+          path: ~/apt-cache
+          key: apt-ffmpeg-egl-v1
+
+      - if: steps.ep.outputs.path != ''
         name: Outils
-        timeout-minutes: 8
+        timeout-minutes: 12
         run: |
-          # ffmpeg + librairies graphiques de skia ; on coupe la mise à jour des pages man (cause de la lenteur d'apt)
+          # ffmpeg + librairies graphiques de skia. Les .deb sont gardés en cache GitHub :
+          # après la 1re installation, plus besoin des serveurs Ubuntu (lents et instables).
           sudo rm -f /var/lib/man-db/auto-update
-          APT="sudo apt-get -o Acquire::http::Timeout=20 -o Acquire::Retries=2 -o DPkg::Lock::Timeout=60 -y -qq --no-install-recommends"
-          PKGS="libegl1 libgl1"; command -v ffmpeg >/dev/null || PKGS="$PKGS ffmpeg"
-          # d'abord sans « apt-get update » (souvent très lent sur ces machines), sinon avec, limité à 3 min
-          timeout 240 $APT install $PKGS || (timeout 180 sudo apt-get -o Acquire::http::Timeout=20 update -qq; timeout 240 $APT install $PKGS)
+          mkdir -p ~/apt-cache/partial
+          APT="sudo apt-get -o Dir::Cache::archives=$HOME/apt-cache -o Acquire::http::Timeout=20 -o Acquire::Retries=3 -o DPkg::Lock::Timeout=60 -y -qq --no-install-recommends"
+          PKGS="ffmpeg libegl1 libgl1"
+          $APT --no-download install $PKGS 2>/dev/null \
+            || timeout 300 $APT install $PKGS \
+            || (timeout 180 sudo apt-get -o Acquire::http::Timeout=20 update -qq; timeout 300 $APT install $PKGS)
+          sudo chown -R "$USER" ~/apt-cache
           ffmpeg -version | head -1
           pip install -q -r requirements.txt
           python3 -c "import skia; print('skia', skia.__version__)"
