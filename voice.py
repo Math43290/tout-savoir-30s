@@ -13,7 +13,7 @@ Une seule requête pour tout l'épisode (intonation continue) ; les mots sont
 ensuite répartis par scène grâce à l'alignement caractère par caractère.
 Uniquement la bibliothèque standard Python : tourne aussi dans n8n (Execute Command).
 """
-import base64, json, os, sys, urllib.parse, urllib.request
+import base64, json, os, sys, urllib.error, urllib.parse, urllib.request
 
 API = "https://api.elevenlabs.io/v1/text-to-speech/{voice}/with-timestamps?output_format=mp3_44100_128"
 
@@ -58,7 +58,7 @@ def list_voices():
 def api(path, method="GET", payload=None):
     req = urllib.request.Request("https://api.elevenlabs.io" + path, method=method,
                                  data=json.dumps(payload).encode() if payload is not None else None,
-                                 headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"})
+                                 headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"].strip(), "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
 
@@ -94,9 +94,12 @@ def main():
         "voice_settings": {"stability": 0.45, "similarity_boost": 0.8, "style": 0.35, "speed": 1.05},
     }).encode()
     req = urllib.request.Request(API.format(voice=voice), data=body, method="POST",
-                                 headers={"xi-api-key": key, "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=180) as r:
-        data = json.load(r)
+                                 headers={"xi-api-key": key.strip(), "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            data = json.load(r)
+    except urllib.error.HTTPError as e:
+        sys.exit(f"ElevenLabs a refusé ({e.code}) : {e.read().decode(errors='replace')[:400]}")
 
     out = os.path.join("voice", ep["id"])
     os.makedirs(out, exist_ok=True)
