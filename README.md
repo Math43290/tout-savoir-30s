@@ -13,7 +13,7 @@ Une vidéo TikTok + Instagram par jour, fabriquée et publiée automatiquement. 
 ## Réglages (une seule fois, dans Settings du dépôt)
 - **Secrets** (Settings → Secrets and variables → Actions → *Secrets*) :
   `PIXABAY_API_KEY`, `ELEVENLABS_API_KEY`, `BUFFER_API_KEY`
-- **Variable** (même page, onglet *Variables*) : `ELEVENLABS_VOICE_ID`
+- **Variable** (facultative) : `ELEVENLABS_VOICE_ID`. Sans elle, la voix « Hugo - Serious and Professional » est retrouvée automatiquement
 - **Pages** (Settings → Pages) : *Deploy from a branch* → `videos` / `(root)`
 
 ## Les fichiers

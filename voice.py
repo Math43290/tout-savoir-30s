@@ -13,7 +13,7 @@ Une seule requête pour tout l'épisode (intonation continue) ; les mots sont
 ensuite répartis par scène grâce à l'alignement caractère par caractère.
 Uniquement la bibliothèque standard Python : tourne aussi dans n8n (Execute Command).
 """
-import base64, json, os, sys, urllib.request
+import base64, json, os, sys, urllib.parse, urllib.request
 
 API = "https://api.elevenlabs.io/v1/text-to-speech/{voice}/with-timestamps?output_format=mp3_44100_128"
 
@@ -55,6 +55,28 @@ def list_voices():
             print(f'{v["voice_id"]}  {v["name"]:<28} {lab.get("gender", "")} {lab.get("accent", "")} {lab.get("language", "")}')
 
 
+def api(path, method="GET", payload=None):
+    req = urllib.request.Request("https://api.elevenlabs.io" + path, method=method,
+                                 data=json.dumps(payload).encode() if payload is not None else None,
+                                 headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return json.load(r)
+
+
+def find_voice(name):
+    """Retrouve une voix par son nom : d'abord dans « Mes voix », sinon dans la bibliothèque (et l'ajoute)."""
+    for v in api("/v1/voices")["voices"]:
+        if v["name"].lower().startswith(name.lower()):
+            return v["voice_id"]
+    q = urllib.parse.quote(name)
+    for v in api(f"/v1/shared-voices?page_size=10&search={q}").get("voices", []):
+        if v["name"].lower().startswith(name.lower()):
+            res = api(f"/v1/voices/add/{v['public_owner_id']}/{v['voice_id']}", "POST", {"new_name": v["name"]})
+            print(f"Voix « {v['name']} » ajoutée à Mes voix", file=sys.stderr)
+            return res.get("voice_id", v["voice_id"])
+    sys.exit(f"Voix introuvable : {name}")
+
+
 def main():
     load_env()
     if sys.argv[1] == "--voix":
@@ -62,9 +84,8 @@ def main():
     ep_path = sys.argv[1]
     ep = json.load(open(ep_path, encoding="utf-8"))
     key = os.environ["ELEVENLABS_API_KEY"]
-    voice = os.environ.get("ELEVENLABS_VOICE_ID") or ep.get("voice_id")
-    if not voice:
-        sys.exit("Renseigner ELEVENLABS_VOICE_ID")
+    voice = os.environ.get("ELEVENLABS_VOICE_ID") or ep.get("voice_id") \
+        or find_voice(os.environ.get("ELEVENLABS_VOICE_NAME") or "Hugo - Serious and Professional")
     vos = [s["vo"].strip() for s in ep["scenes"]]
     text = " ".join(vos)
     body = json.dumps({
