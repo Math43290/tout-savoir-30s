@@ -42,7 +42,12 @@ jobs:
             | tar -xJ -C "$HOME/ffmpeg" --strip-components=1
           echo "$HOME/ffmpeg" >> "$GITHUB_PATH"
           "$HOME/ffmpeg/ffmpeg" -version | head -1
+          # librairies graphiques du moteur de dessin (skia) ; on coupe la mise à jour des pages man, très lente
+          sudo rm -f /var/lib/man-db/auto-update
+          sudo apt-get install -y -qq --no-install-recommends libegl1 libgl1 \
+            || (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends libegl1 libgl1)
           pip install -q -r requirements.txt
+          python3 -c "import skia; print('skia', skia.__version__)"
 
       - if: steps.ep.outputs.path != ''
         name: Images, voix, vidéo
