@@ -697,6 +697,8 @@ def render_scene(args):
         with surf as c:
             render_frame(c, sc, t, total)
         ff.stdin.write(to_rgb(surf, sc["start"] + t).tobytes())
+        if f % 60 == 0:
+            print(f"  scène {sc['index'] + 1} : image {f}/{n}", flush=True)
     ff.stdin.close()
     if ff.wait() != 0:
         raise RuntimeError(f"ffmpeg a échoué pour la scène {sc['index']}")
@@ -733,7 +735,9 @@ def main():
         return
     # « spawn » et non « fork » : un fork après chargement de skia/fontconfig peut se figer
     import multiprocessing as mp
-    with mp.get_context("spawn").Pool(os.cpu_count() or 2) as pool:
+    workers = int(os.environ.get("RENDER_WORKERS") or os.cpu_count() or 2)
+    print(f"Rendu sur {workers} processus", flush=True)
+    with mp.get_context("spawn").Pool(workers) as pool:
         files = pool.map(render_scene, [(sc, total, outdir) for sc in scenes])
     lst = os.path.join(outdir, "list.txt")
     open(lst, "w").write("".join(f"file '{os.path.abspath(f)}'\n" for f in files))

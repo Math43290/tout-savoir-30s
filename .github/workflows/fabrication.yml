@@ -61,7 +61,9 @@ jobs:
         run: |
           python3 fetch_images.py "$EP"
           [ -f "voice/$ID/timings.json" ] || python3 voice.py "$EP"
-          python3 render.py "$EP" --voice "voice/$ID"
+          export PYTHONUNBUFFERED=1
+          time timeout 90 python3 render.py "$EP" --voice "voice/$ID" --frames 1     # test rapide d'une image
+          time python3 render.py "$EP" --voice "voice/$ID"
           mkdir -p publie
           ffmpeg -v error -y -i "out/$ID/$ID.mp4" -c:v libx264 -preset medium -crf 23 -c:a copy -movflags +faststart "publie/$ID.mp4"
           ls -la publie
