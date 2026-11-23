@@ -38,8 +38,10 @@ jobs:
         run: |
           # ffmpeg + librairies graphiques de skia ; on coupe la mise à jour des pages man (cause de la lenteur d'apt)
           sudo rm -f /var/lib/man-db/auto-update
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends ffmpeg libegl1 libgl1
+          APT="sudo apt-get -o Acquire::http::Timeout=20 -o Acquire::Retries=2 -o DPkg::Lock::Timeout=60 -y -qq --no-install-recommends"
+          PKGS="libegl1 libgl1"; command -v ffmpeg >/dev/null || PKGS="$PKGS ffmpeg"
+          # d'abord sans « apt-get update » (souvent très lent sur ces machines), sinon avec, limité à 3 min
+          timeout 240 $APT install $PKGS || (timeout 180 sudo apt-get -o Acquire::http::Timeout=20 update -qq; timeout 240 $APT install $PKGS)
           ffmpeg -version | head -1
           pip install -q -r requirements.txt
           python3 -c "import skia; print('skia', skia.__version__)"
