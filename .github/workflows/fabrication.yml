@@ -34,8 +34,14 @@ jobs:
 
       - if: steps.ep.outputs.path != ''
         name: Outils
+        timeout-minutes: 6
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          # ffmpeg précompilé (quelques secondes) au lieu d'apt-get (très lent sur les machines GitHub)
+          mkdir -p "$HOME/ffmpeg"
+          curl -sSL --retry 3 https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+            | tar -xJ -C "$HOME/ffmpeg" --strip-components=1
+          echo "$HOME/ffmpeg" >> "$GITHUB_PATH"
+          "$HOME/ffmpeg/ffmpeg" -version | head -1
           pip install -q -r requirements.txt
 
       - if: steps.ep.outputs.path != ''
