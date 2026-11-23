@@ -41,6 +41,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ID: ${{ steps.ep.outputs.id }}
         run: |
+          set -o pipefail
           URL=$(python3 -c "import json,os;print(json.load(open(f'episodes/{os.environ[\"ID\"]}.json'))['video_url'])")
           case "$COMMENTAIRE" in *maintenant*) QUAND=$(python3 pipeline.py prochain-creneau maintenant) ;; *) QUAND=$(python3 pipeline.py prochain-creneau) ;; esac
           python3 publish_buffer.py "episodes/$ID.json" --url "$URL" --le "$QUAND" | tee resultat.txt
@@ -49,6 +50,14 @@ jobs:
           { echo "✅ Programmé sur TikTok :"; echo '```'; cat resultat.txt; echo '```'; } > msg.md
           gh issue comment "${{ github.event.issue.number }}" --body-file msg.md
           gh issue close "${{ github.event.issue.number }}"
+
+      - name: Prévenir en cas d'échec
+        if: failure() && startsWith(github.event.comment.body, '/valider')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue reopen "${{ github.event.issue.number }}" || true
+          gh issue comment "${{ github.event.issue.number }}" --body "❌ La programmation sur Buffer a échoué. Détail : ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}. Réessayez avec \`/valider\` une fois le problème corrigé."
 
       - name: Refaire
         if: startsWith(github.event.comment.body, '/refaire')

@@ -7,7 +7,7 @@ La vidéo doit être à une URL publique directe (GitHub Pages convient).
 Clé lue dans .env ou l'environnement : BUFFER_API_KEY (publish.buffer.com/settings/api).
 Uniquement la bibliothèque standard Python.
 """
-import argparse, json, os, sys, urllib.request
+import argparse, json, os, sys, urllib.error, urllib.request
 
 from voice import load_env
 
@@ -22,10 +22,14 @@ MUTATION = """mutation($input: CreatePostInput!) {
 
 def gql(query, variables=None):
     body = json.dumps({"query": query, "variables": variables or {}}).encode()
+    key = os.environ["BUFFER_API_KEY"].strip()          # un copier-coller ajoute parfois un saut de ligne
     req = urllib.request.Request(API, data=body, method="POST", headers={
-        "Content-Type": "application/json", "Authorization": f"Bearer {os.environ['BUFFER_API_KEY']}"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        res = json.load(r)
+        "Content-Type": "application/json", "Authorization": f"Bearer {key}", "User-Agent": "tout-savoir-30s"})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            res = json.load(r)
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"Buffer a répondu {e.code} : {e.read().decode(errors='replace')[:500]}")
     if res.get("errors"):
         raise RuntimeError(json.dumps(res["errors"], ensure_ascii=False))
     return res["data"]
@@ -71,12 +75,14 @@ def main():
             print(json.dumps(inp, ensure_ascii=False, indent=1))
             continue
         res = gql(MUTATION, {"input": inp})["createPost"]
+        print(json.dumps(res, ensure_ascii=False), file=sys.stderr)
         if "message" in res:
             ok = False
             print(f"{c['service']} : ÉCHEC — {res['message']}", file=sys.stderr)
         else:
             print(f"{c['service']} : programmé ({res['post']['dueAt']})")
-    sys.exit(0 if ok else 1)
+    if not chans or not ok:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
