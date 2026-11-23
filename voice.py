@@ -91,7 +91,7 @@ def main():
     body = json.dumps({
         "text": text,
         "model_id": os.environ.get("ELEVENLABS_MODEL", "eleven_multilingual_v2"),
-        "voice_settings": {"stability": 0.45, "similarity_boost": 0.8, "style": 0.35, "speed": 1.05},
+        "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.0, "speed": 1.12},
     }).encode()
     req = urllib.request.Request(API.format(voice=voice), data=body, method="POST",
                                  headers={"xi-api-key": key.strip(), "Content-Type": "application/json"})

@@ -34,7 +34,7 @@
       ]
     },
     {
-      "vo": "Leur couleur vient de leur assiette : des petites crevettes et des algues remplies de pigments.",
+      "vo": "Leur couleur vient de leur assiette : crevettes et algues pleines de pigments.",
       "image": {
         "recherche": "flamingo feeding water",
         "mouvement": "pan_right",
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "vo": "Plus un flamant en mange, plus il devient rose vif. S'il arrête, ses nouvelles plumes poussent toutes pâles.",
+      "vo": "Plus un flamant en mange, plus il est rose vif. S'il arrête, il pâlit.",
       "image": {
         "recherche": "pink flamingos group",
         "mouvement": "zoom_in",
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "vo": "Dans les zoos, on ajoute même ces pigments à leurs repas pour qu'ils gardent leur couleur.",
+      "vo": "Dans les zoos, on ajoute même ces pigments à leurs repas.",
       "image": {
         "recherche": "flamingo zoo",
         "mouvement": "zoom_out",

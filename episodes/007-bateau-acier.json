@@ -48,7 +48,7 @@
       ]
     },
     {
-      "vo": "Le secret, c'est Archimède : l'eau pousse vers le haut, avec une force égale au poids de l'eau déplacée.",
+      "vo": "Le secret, c'est Archimède : l'eau pousse vers le haut, autant que le poids d'eau déplacée.",
       "image": {
         "recherche": "water surface",
         "mouvement": "zoom_in",
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "vo": "Une coque creuse, remplie d'air, déplace beaucoup d'eau. Elle s'enfonce jusqu'à ce que l'eau déplacée pèse autant que le bateau.",
+      "vo": "Une coque remplie d'air déplace beaucoup d'eau. Elle s'enfonce jusqu'à ce que l'eau déplacée pèse autant que le bateau.",
       "image": {
         "recherche": "boat harbor",
         "mouvement": "zoom_out",
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "vo": "Voilà pourquoi un bateau troué finit par couler : l'eau prend la place de l'air.",
+      "vo": "Voilà pourquoi un bateau troué coule : l'eau prend la place de l'air.",
       "image": {
         "recherche": "shipwreck",
         "mouvement": "zoom_in",

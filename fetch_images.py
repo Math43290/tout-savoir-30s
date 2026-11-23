@@ -29,7 +29,7 @@ def get(url, headers=None):
 def pexels(query, used):
     url = "https://api.pexels.com/v1/search?" + urllib.parse.urlencode(
         {"query": query, "orientation": "portrait", "size": "large", "per_page": 15})
-    res = json.loads(get(url, {"Authorization": os.environ["PEXELS_API_KEY"]}))
+    res = json.loads(get(url, {"Authorization": os.environ["PEXELS_API_KEY"].strip()}))
     for ph in res.get("photos", []):
         if ph["id"] not in used:
             used.add(ph["id"])
@@ -39,7 +39,7 @@ def pexels(query, used):
 
 def pixabay(query, used):
     url = "https://pixabay.com/api/?" + urllib.parse.urlencode(
-        {"key": os.environ["PIXABAY_API_KEY"], "q": query, "image_type": "photo", "orientation": "vertical",
+        {"key": os.environ["PIXABAY_API_KEY"].strip(), "q": query, "image_type": "photo", "orientation": "vertical",
          "per_page": 20, "safesearch": "true", "min_height": 1600})
     res = json.loads(get(url))
     for h in res.get("hits", []):

@@ -37,7 +37,7 @@
       ]
     },
     {
-      "vo": "La lumière du Soleil est blanche : elle mélange toutes les couleurs de l'arc-en-ciel.",
+      "vo": "La lumière du Soleil mélange toutes les couleurs de l'arc-en-ciel.",
       "image": {
         "recherche": "prism rainbow light",
         "mouvement": "pan_right",
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "vo": "En traversant l'air, elle percute des milliards de molécules. Et le bleu rebondit environ cinq fois plus que le rouge.",
+      "vo": "Dans l'air, le bleu rebondit cinq fois plus que le rouge.",
       "image": {
         "recherche": "blue sky sun rays",
         "mouvement": "zoom_in",
@@ -80,7 +80,7 @@
       ]
     },
     {
-      "vo": "Ce bleu éparpillé nous arrive de partout à la fois. Résultat : tout le ciel paraît bleu.",
+      "vo": "Ce bleu nous arrive alors de partout : tout le ciel paraît bleu.",
       "image": {
         "recherche": "looking up blue sky trees",
         "mouvement": "zoom_out",
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "vo": "Et le soir ? La lumière traverse bien plus d'air. Le bleu se perd en route… il reste l'orange.",
+      "vo": "Le soir, la lumière traverse plus d'air. Le bleu se perd… il reste l'orange.",
       "image": {
         "recherche": "sunset orange sky",
         "mouvement": "pan_left",

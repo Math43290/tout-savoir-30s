@@ -50,7 +50,7 @@ jobs:
         name: Images, voix, vidéo
         timeout-minutes: 12
         env:
-          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY || secrets.PIXABAY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: ${{ vars.ELEVENLABS_VOICE_ID }}
           EP: ${{ steps.ep.outputs.path }}

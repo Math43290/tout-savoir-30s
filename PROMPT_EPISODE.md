@@ -4,7 +4,7 @@ Tu écris un épisode de la série TikTok « Tout savoir en 30 s ».
 Sujet : {{sujet}} — Catégorie : {{categorie}} — Numéro : {{numero}}
 
 Règles d'écriture :
-- 70 à 85 mots de voix off au total, tutoiement, phrases courtes, à l'oral.
+- 60 à 70 mots et 420 caractères maximum de voix off au total (pour tenir en 30 secondes), tutoiement, phrases courtes, à l'oral.
 - Scène 1 = accroche surprenante en moins de 10 mots. Elle doit donner envie de rester.
 - 4 à 6 scènes. Chaque scène porte une seule idée.
 - Dernière scène : « Abonne-toi, et dis-moi en commentaire le prochain sujet. »
