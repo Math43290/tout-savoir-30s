@@ -32,10 +32,11 @@ jobs:
           git config --global user.name "tout-savoir-30s"
           git config --global user.email "actions@users.noreply.github.com"
 
-      - name: Programmer sur TikTok + Instagram
+      - name: Programmer sur TikTok
         if: startsWith(github.event.comment.body, '/valider')
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          RESEAUX: ${{ vars.RESEAUX || 'tiktok' }}
           GH_TOKEN: ${{ github.token }}
           ID: ${{ steps.ep.outputs.id }}
         run: |
@@ -44,7 +45,7 @@ jobs:
           python3 publish_buffer.py "episodes/$ID.json" --url "$URL" --le "$QUAND" | tee resultat.txt
           python3 pipeline.py statut "$ID" "publié" "programme_le=$QUAND"
           git add episodes && git commit -q -m "Épisode $ID programmé [skip ci]" && git push -q
-          { echo "✅ Programmé sur TikTok + Instagram :"; echo '```'; cat resultat.txt; echo '```'; } > msg.md
+          { echo "✅ Programmé sur TikTok :"; echo '```'; cat resultat.txt; echo '```'; } > msg.md
           gh issue comment "${{ github.event.issue.number }}" --body-file msg.md
           gh issue close "${{ github.event.issue.number }}"
 

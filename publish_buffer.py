@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Programme un épisode sur TikTok + Instagram (Reel) via l'API gratuite de Buffer.
+"""Programme un épisode sur TikTok (et Instagram si RESEAUX=tiktok,instagram) via l'API gratuite de Buffer.
 
     python3 publish_buffer.py episodes/002-xxx.json --url https://.../002-xxx.mp4 [--le 2026-11-25T17:30:00Z] [--test]
 
@@ -45,7 +45,7 @@ def main():
     ap.add_argument("episode")
     ap.add_argument("--url", required=True, help="URL publique directe de la vidéo")
     ap.add_argument("--le", help="date UTC ISO (ex. 2026-11-25T17:30:00Z) ; sinon prochain créneau de la file Buffer")
-    ap.add_argument("--reseaux", default="tiktok,instagram")
+    ap.add_argument("--reseaux", default=os.environ.get("RESEAUX", "tiktok"))
     ap.add_argument("--test", action="store_true")
     a = ap.parse_args()
     load_env()
@@ -56,7 +56,7 @@ def main():
     chans = [c for c in channels() if c["service"] in wanted] if not a.test else \
         [{"id": "TEST_" + s, "service": s, "name": s} for s in wanted]
     if not chans:
-        sys.exit("Aucun compte TikTok/Instagram trouvé dans Buffer : connectez-les sur publish.buffer.com")
+        sys.exit(f"Aucun compte {a.reseaux} trouvé dans Buffer : connectez-le sur publish.buffer.com")
     ok = True
     for c in chans:
         meta = {"instagram": {"type": "reel", "shouldShareToFeed": True, "isAiGenerated": True}} \
