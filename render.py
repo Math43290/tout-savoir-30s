@@ -700,7 +700,12 @@ def render_scene(args):
         if f % 60 == 0:
             print(f"  scène {sc['index'] + 1} : image {f}/{n}", flush=True)
     ff.stdin.close()
-    if ff.wait() != 0:
+    try:
+        rc = ff.wait(timeout=120)
+    except subprocess.TimeoutExpired:
+        ff.kill(); raise RuntimeError(f"ffmpeg bloqué sur la scène {sc['index']}")
+    print(f"  scène {sc['index'] + 1} : terminée", flush=True)
+    if rc != 0:
         raise RuntimeError(f"ffmpeg a échoué pour la scène {sc['index']}")
     os.replace(tmp, final)
     return final
@@ -739,15 +744,16 @@ def main():
     print(f"Rendu sur {workers} processus", flush=True)
     with mp.get_context("spawn").Pool(workers) as pool:
         files = pool.map(render_scene, [(sc, total, outdir) for sc in scenes])
+    print("Assemblage des scènes", flush=True)
     lst = os.path.join(outdir, "list.txt")
     open(lst, "w").write("".join(f"file '{os.path.abspath(f)}'\n" for f in files))
     silent = os.path.join(outdir, "video_muette.mp4")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst,
-                    "-c", "copy", "-movflags", "+faststart", silent], check=True)
+    subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst,
+                    "-c", "copy", "-movflags", "+faststart", silent], check=True, timeout=120)
     final = os.path.join(outdir, f"{ep['id']}.mp4")
     audio = os.path.join(a.voice, "audio.mp3") if a.voice else None
     if audio and os.path.exists(audio):
-        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", silent, "-i", audio, "-map", "0:v", "-map", "1:a",
+        subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", silent, "-i", audio, "-map", "0:v", "-map", "1:a",
                         "-c:v", "copy", "-af", "apad", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", final], check=True)
     else:
         os.replace(silent, final)

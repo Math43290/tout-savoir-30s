@@ -34,18 +34,13 @@ jobs:
 
       - if: steps.ep.outputs.path != ''
         name: Outils
-        timeout-minutes: 6
+        timeout-minutes: 8
         run: |
-          # ffmpeg précompilé (quelques secondes) au lieu d'apt-get (très lent sur les machines GitHub)
-          mkdir -p "$HOME/ffmpeg"
-          curl -sSL --retry 3 https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
-            | tar -xJ -C "$HOME/ffmpeg" --strip-components=1
-          echo "$HOME/ffmpeg" >> "$GITHUB_PATH"
-          "$HOME/ffmpeg/ffmpeg" -version | head -1
-          # librairies graphiques du moteur de dessin (skia) ; on coupe la mise à jour des pages man, très lente
+          # ffmpeg + librairies graphiques de skia ; on coupe la mise à jour des pages man (cause de la lenteur d'apt)
           sudo rm -f /var/lib/man-db/auto-update
-          sudo apt-get install -y -qq --no-install-recommends libegl1 libgl1 \
-            || (sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends libegl1 libgl1)
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg libegl1 libgl1
+          ffmpeg -version | head -1
           pip install -q -r requirements.txt
           python3 -c "import skia; print('skia', skia.__version__)"
 
@@ -65,7 +60,7 @@ jobs:
           time timeout 90 python3 render.py "$EP" --voice "voice/$ID" --frames 1     # test rapide d'une image
           time python3 render.py "$EP" --voice "voice/$ID"
           mkdir -p publie
-          ffmpeg -v error -y -i "out/$ID/$ID.mp4" -c:v libx264 -preset medium -crf 23 -c:a copy -movflags +faststart "publie/$ID.mp4"
+          ffmpeg -nostdin -v error -y -i "out/$ID/$ID.mp4" -c:v libx264 -preset medium -crf 23 -c:a copy -movflags +faststart "publie/$ID.mp4"
           ls -la publie
 
       - if: steps.ep.outputs.path != ''
