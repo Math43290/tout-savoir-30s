@@ -1,0 +1,434 @@
+{
+ "scenes": [
+  {
+   "duration": 3.456,
+   "words": [
+    {
+     "word": "Chaque",
+     "start": 0.0,
+     "end": 0.32
+    },
+    {
+     "word": "été,",
+     "start": 0.34,
+     "end": 0.66
+    },
+    {
+     "word": "la",
+     "start": 0.914,
+     "end": 1.135
+    },
+    {
+     "word": "tour",
+     "start": 1.155,
+     "end": 1.376
+    },
+    {
+     "word": "Eiffel",
+     "start": 1.396,
+     "end": 1.789
+    },
+    {
+     "word": "grandit.",
+     "start": 1.809,
+     "end": 2.202
+    },
+    {
+     "word": "Pour",
+     "start": 2.65,
+     "end": 2.8
+    },
+    {
+     "word": "de",
+     "start": 2.82,
+     "end": 2.969
+    },
+    {
+     "word": "vrai.",
+     "start": 2.989,
+     "end": 3.139
+    }
+   ]
+  },
+  {
+   "duration": 4.726,
+   "words": [
+    {
+     "word": "Entre",
+     "start": 0.15,
+     "end": 0.426
+    },
+    {
+     "word": "un",
+     "start": 0.446,
+     "end": 0.598
+    },
+    {
+     "word": "hiver",
+     "start": 0.618,
+     "end": 0.894
+    },
+    {
+     "word": "glacial",
+     "start": 0.914,
+     "end": 1.19
+    },
+    {
+     "word": "et",
+     "start": 1.21,
+     "end": 1.362
+    },
+    {
+     "word": "une",
+     "start": 1.382,
+     "end": 1.658
+    },
+    {
+     "word": "canicule,",
+     "start": 1.678,
+     "end": 2.199
+    },
+    {
+     "word": "elle",
+     "start": 2.219,
+     "end": 2.495
+    },
+    {
+     "word": "peut",
+     "start": 2.515,
+     "end": 2.667
+    },
+    {
+     "word": "gagner",
+     "start": 2.687,
+     "end": 2.963
+    },
+    {
+     "word": "jusqu'à",
+     "start": 2.983,
+     "end": 3.382
+    },
+    {
+     "word": "quinze",
+     "start": 3.555,
+     "end": 3.865
+    },
+    {
+     "word": "centimètres.",
+     "start": 3.885,
+     "end": 4.469
+    }
+   ]
+  },
+  {
+   "duration": 6.451,
+   "words": [
+    {
+     "word": "La",
+     "start": 0.15,
+     "end": 0.258
+    },
+    {
+     "word": "raison",
+     "start": 0.278,
+     "end": 0.477
+    },
+    {
+     "word": ":",
+     "start": 0.497,
+     "end": 0.605
+    },
+    {
+     "word": "la",
+     "start": 0.989,
+     "end": 1.177
+    },
+    {
+     "word": "dilatation.",
+     "start": 1.197,
+     "end": 1.831
+    },
+    {
+     "word": "Le",
+     "start": 2.256,
+     "end": 2.467
+    },
+    {
+     "word": "fer",
+     "start": 2.487,
+     "end": 2.697
+    },
+    {
+     "word": "chauffe,",
+     "start": 2.717,
+     "end": 3.092
+    },
+    {
+     "word": "il",
+     "start": 3.411,
+     "end": 3.565
+    },
+    {
+     "word": "s'allonge.",
+     "start": 3.585,
+     "end": 3.987
+    },
+    {
+     "word": "D'un",
+     "start": 4.358,
+     "end": 4.526
+    },
+    {
+     "word": "centième",
+     "start": 4.546,
+     "end": 4.982
+    },
+    {
+     "word": "de",
+     "start": 5.002,
+     "end": 5.17
+    },
+    {
+     "word": "millimètre",
+     "start": 5.19,
+     "end": 5.76
+    },
+    {
+     "word": "par",
+     "start": 5.78,
+     "end": 5.947
+    },
+    {
+     "word": "mètre.",
+     "start": 5.967,
+     "end": 6.269
+    }
+   ]
+  },
+  {
+   "duration": 5.598,
+   "words": [
+    {
+     "word": "Presque",
+     "start": 0.15,
+     "end": 0.473
+    },
+    {
+     "word": "rien",
+     "start": 0.493,
+     "end": 0.674
+    },
+    {
+     "word": "!",
+     "start": 0.694,
+     "end": 0.874
+    },
+    {
+     "word": "Mais",
+     "start": 1.208,
+     "end": 1.396
+    },
+    {
+     "word": "sur",
+     "start": 1.416,
+     "end": 1.604
+    },
+    {
+     "word": "trois",
+     "start": 1.624,
+     "end": 1.812
+    },
+    {
+     "word": "cents",
+     "start": 1.832,
+     "end": 2.019
+    },
+    {
+     "word": "mètres",
+     "start": 2.039,
+     "end": 2.376
+    },
+    {
+     "word": "et",
+     "start": 2.396,
+     "end": 2.584
+    },
+    {
+     "word": "trente",
+     "start": 2.604,
+     "end": 2.94
+    },
+    {
+     "word": "degrés",
+     "start": 2.96,
+     "end": 3.296
+    },
+    {
+     "word": "d'écart,",
+     "start": 3.316,
+     "end": 3.653
+    },
+    {
+     "word": "ça",
+     "start": 3.673,
+     "end": 3.86
+    },
+    {
+     "word": "fait",
+     "start": 3.88,
+     "end": 4.068
+    },
+    {
+     "word": "plus",
+     "start": 4.088,
+     "end": 4.276
+    },
+    {
+     "word": "de",
+     "start": 4.296,
+     "end": 4.484
+    },
+    {
+     "word": "dix",
+     "start": 4.504,
+     "end": 4.692
+    },
+    {
+     "word": "centimètres.",
+     "start": 4.712,
+     "end": 5.345
+    }
+   ]
+  },
+  {
+   "duration": 5.044,
+   "words": [
+    {
+     "word": "Encore",
+     "start": 0.15,
+     "end": 0.426
+    },
+    {
+     "word": "plus",
+     "start": 0.446,
+     "end": 0.548
+    },
+    {
+     "word": "fou",
+     "start": 0.568,
+     "end": 0.67
+    },
+    {
+     "word": ":",
+     "start": 0.69,
+     "end": 0.792
+    },
+    {
+     "word": "le",
+     "start": 1.166,
+     "end": 1.34
+    },
+    {
+     "word": "soleil",
+     "start": 1.36,
+     "end": 1.673
+    },
+    {
+     "word": "chauffe",
+     "start": 1.693,
+     "end": 2.006
+    },
+    {
+     "word": "un",
+     "start": 2.147,
+     "end": 2.31
+    },
+    {
+     "word": "seul",
+     "start": 2.33,
+     "end": 2.494
+    },
+    {
+     "word": "côté,",
+     "start": 2.514,
+     "end": 2.81
+    },
+    {
+     "word": "et",
+     "start": 3.116,
+     "end": 3.266
+    },
+    {
+     "word": "le",
+     "start": 3.286,
+     "end": 3.437
+    },
+    {
+     "word": "sommet",
+     "start": 3.457,
+     "end": 3.729
+    },
+    {
+     "word": "s'écarte",
+     "start": 3.749,
+     "end": 4.143
+    },
+    {
+     "word": "à",
+     "start": 4.163,
+     "end": 4.314
+    },
+    {
+     "word": "l'opposé.",
+     "start": 4.334,
+     "end": 4.728
+    }
+   ]
+  },
+  {
+   "duration": 2.833,
+   "words": [
+    {
+     "word": "Abonne-toi,",
+     "start": 0.15,
+     "end": 0.641
+    },
+    {
+     "word": "et",
+     "start": 0.877,
+     "end": 1.03
+    },
+    {
+     "word": "dis-moi",
+     "start": 1.05,
+     "end": 1.327
+    },
+    {
+     "word": "en",
+     "start": 1.347,
+     "end": 1.5
+    },
+    {
+     "word": "commentaire",
+     "start": 1.52,
+     "end": 2.045
+    },
+    {
+     "word": "le",
+     "start": 2.065,
+     "end": 2.218
+    },
+    {
+     "word": "prochain",
+     "start": 2.238,
+     "end": 2.516
+    },
+    {
+     "word": "sujet.",
+     "start": 2.536,
+     "end": 2.813
+    }
+   ]
+  }
+ ]
+}

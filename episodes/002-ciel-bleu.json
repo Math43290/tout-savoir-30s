@@ -1,0 +1,128 @@
+{
+  "id": "002-ciel-bleu",
+  "numero": 2,
+  "categorie": "Sciences",
+  "titre": "Pourquoi le ciel est bleu",
+  "legende": "Non, le ciel n'est pas bleu à cause de la mer 🌊 La vraie raison tient en 30 secondes. Et toi, tu y croyais ?",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#apprendresurtiktok",
+    "#science",
+    "#cielbleu",
+    "#lesaviezvous"
+  ],
+  "sources": [
+    "https://fr.wikipedia.org/wiki/Diffusion_Rayleigh"
+  ],
+  "scenes": [
+    {
+      "vo": "Vrai ou faux : le ciel est bleu parce qu'il reflète la mer ? Faux !",
+      "image": {
+        "recherche": "blue sky clouds",
+        "mouvement": "zoom_in",
+        "opacite": 0.55,
+        "flou": 8
+      },
+      "elements": [
+        {
+          "type": "tag",
+          "text": "N°02 · SCIENCES"
+        },
+        {
+          "type": "vraifaux",
+          "affirmation": "Le ciel est bleu parce qu'il *reflète la mer*",
+          "reponse": "Faux",
+          "at_reponse": "Faux"
+        }
+      ]
+    },
+    {
+      "vo": "La lumière du Soleil est blanche : elle mélange toutes les couleurs de l'arc-en-ciel.",
+      "image": {
+        "recherche": "prism rainbow light",
+        "mouvement": "pan_right",
+        "opacite": 0.7
+      },
+      "elements": [
+        {
+          "type": "title",
+          "text": "Une lumière *blanche*"
+        }
+      ]
+    },
+    {
+      "vo": "En traversant l'air, elle percute des milliards de molécules. Et le bleu rebondit environ cinq fois plus que le rouge.",
+      "image": {
+        "recherche": "blue sky sun rays",
+        "mouvement": "zoom_in",
+        "opacite": 0.5,
+        "flou": 8
+      },
+      "elements": [
+        {
+          "type": "title",
+          "text": "Le bleu *rebondit*"
+        },
+        {
+          "type": "comparaison",
+          "a": {
+            "nom": "Rouge",
+            "valeur": 1,
+            "texte": "×1"
+          },
+          "b": {
+            "nom": "Bleu",
+            "valeur": 5,
+            "texte": "×5"
+          },
+          "at": "rebondit"
+        }
+      ]
+    },
+    {
+      "vo": "Ce bleu éparpillé nous arrive de partout à la fois. Résultat : tout le ciel paraît bleu.",
+      "image": {
+        "recherche": "looking up blue sky trees",
+        "mouvement": "zoom_out",
+        "opacite": 0.7
+      },
+      "elements": [
+        {
+          "type": "title",
+          "text": "Du bleu *partout*"
+        }
+      ]
+    },
+    {
+      "vo": "Et le soir ? La lumière traverse bien plus d'air. Le bleu se perd en route… il reste l'orange.",
+      "image": {
+        "recherche": "sunset orange sky",
+        "mouvement": "pan_left",
+        "opacite": 0.75
+      },
+      "elements": [
+        {
+          "type": "title",
+          "text": "Le soir, *l'orange*"
+        }
+      ]
+    },
+    {
+      "vo": "Abonne-toi, et dis-moi en commentaire le prochain sujet.",
+      "image": {
+        "recherche": "sunset clouds",
+        "mouvement": "zoom_out",
+        "opacite": 0.6
+      },
+      "elements": [
+        {
+          "type": "outro",
+          "title": "Tout savoir en *30 secondes*",
+          "cta": "Le prochain sujet ? Dis-le en commentaire",
+          "cta_at": "commentaire"
+        }
+      ]
+    }
+  ],
+  "statut": "à faire"
+}

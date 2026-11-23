@@ -1,0 +1,177 @@
+{
+  "id": "001-tour-eiffel",
+  "numero": 1,
+  "categorie": "Physique",
+  "legende": "La tour Eiffel n'a pas la même taille en été et en hiver 🌡️ Tu savais ? Dis-moi en commentaire le prochain sujet que tu veux comprendre en 30 secondes.",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#apprendresurtiktok",
+    "#toureiffel",
+    "#physique",
+    "#lesaviezvous"
+  ],
+  "scenes": [
+    {
+      "vo": "Chaque été, la tour Eiffel grandit. Pour de vrai.",
+      "elements": [
+        {
+          "type": "tag",
+          "text": "N°01 · PHYSIQUE"
+        },
+        {
+          "type": "title",
+          "text": "La tour Eiffel *grandit* en été"
+        }
+      ],
+      "image": {
+        "recherche": "eiffel tower blue sky summer",
+        "mouvement": "zoom_in",
+        "opacite": 0.75,
+        "fichier": "images/001-tour-eiffel/scene01.jpg"
+      }
+    },
+    {
+      "vo": "Entre un hiver glacial et une canicule, elle peut gagner jusqu'à quinze centimètres.",
+      "elements": [
+        {
+          "type": "title",
+          "text": "Jusqu'à *+15 cm*",
+          "fade_in": true
+        },
+        {
+          "type": "tower",
+          "mode": "grow",
+          "at": "canicule"
+        },
+        {
+          "type": "temp",
+          "side": "left",
+          "text": "HIVER",
+          "value": "-5 °C",
+          "at": "hiver",
+          "cold": true
+        },
+        {
+          "type": "temp",
+          "side": "right",
+          "text": "CANICULE",
+          "value": "40 °C",
+          "at": "canicule"
+        }
+      ],
+      "image": {
+        "recherche": "paris heatwave sun",
+        "mouvement": "zoom_in",
+        "opacite": 0.5,
+        "fichier": "images/001-tour-eiffel/scene02.jpg",
+        "flou": 10
+      }
+    },
+    {
+      "vo": "La raison : la dilatation. Le fer chauffe, il s'allonge. D'un centième de millimètre par mètre.",
+      "elements": [
+        {
+          "type": "title",
+          "text": "Le fer *s'allonge*"
+        },
+        {
+          "type": "bar",
+          "heat_at": "chauffe",
+          "label_at": "centième"
+        }
+      ],
+      "image": {
+        "recherche": "rusty iron rivets close up",
+        "mouvement": "zoom_in",
+        "opacite": 0.55,
+        "fichier": "images/001-tour-eiffel/scene03.jpg",
+        "flou": 3
+      }
+    },
+    {
+      "vo": "Presque rien ! Mais sur trois cents mètres et trente degrés d'écart, ça fait plus de dix centimètres.",
+      "elements": [
+        {
+          "type": "title",
+          "text": "Petit × grand = *énorme*"
+        },
+        {
+          "type": "equation",
+          "lines": [
+            {
+              "text": "0,012 mm",
+              "at": "Presque"
+            },
+            {
+              "text": "× 300 m",
+              "at": "trois"
+            },
+            {
+              "text": "× 30 °C",
+              "at": "trente"
+            }
+          ],
+          "result": "10,8",
+          "unit": "cm",
+          "result_at": "plus"
+        }
+      ],
+      "image": {
+        "recherche": "eiffel tower from below structure",
+        "mouvement": "zoom_out",
+        "opacite": 0.45,
+        "fichier": "images/001-tour-eiffel/scene04.jpg",
+        "flou": 6
+      }
+    },
+    {
+      "vo": "Encore plus fou : le soleil chauffe un seul côté, et le sommet s'écarte à l'opposé.",
+      "elements": [
+        {
+          "type": "title",
+          "text": "Le sommet *fuit* le soleil"
+        },
+        {
+          "type": "tower",
+          "mode": "lean",
+          "at": "soleil"
+        },
+        {
+          "type": "note",
+          "text": "mouvement exagéré pour l'animation",
+          "at": "sommet"
+        }
+      ],
+      "image": {
+        "recherche": "eiffel tower sunset",
+        "mouvement": "zoom_in",
+        "opacite": 0.5,
+        "fichier": "images/001-tour-eiffel/scene05.jpg",
+        "flou": 9
+      }
+    },
+    {
+      "vo": "Abonne-toi, et dis-moi en commentaire le prochain sujet.",
+      "elements": [
+        {
+          "type": "outro",
+          "title": "Tout savoir en *30 secondes*",
+          "cta": "Le prochain sujet ? Dis-le en commentaire",
+          "cta_at": "commentaire"
+        }
+      ],
+      "image": {
+        "recherche": "paris rooftops night",
+        "mouvement": "zoom_out",
+        "opacite": 0.6,
+        "fichier": "images/001-tour-eiffel/scene06.jpg"
+      }
+    }
+  ],
+  "titre": "Pourquoi la tour Eiffel grandit en été",
+  "sources": [
+    "https://www.toureiffel.paris/en/news/history-and-culture/why-does-eiffel-tower-change-size",
+    "https://www.letribunaldunet.fr/le-saviez-vous/pourquoi-tour-eiffel-grandit-ete-dilatation.html"
+  ],
+  "statut": "à faire"
+}

@@ -1,0 +1,117 @@
+name: Fabrication de l'épisode du jour
+
+on:
+  schedule:
+    - cron: "0 5 * * *"        # chaque jour vers 6 h (heure de Paris)
+  workflow_dispatch:           # bouton « Run workflow » pour lancer à la main
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency: fabrication
+
+jobs:
+  fabriquer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Choisir l'épisode
+        id: ep
+        run: |
+          P=$(python3 pipeline.py suivant)
+          echo "path=$P" >> "$GITHUB_OUTPUT"
+          echo "id=$(basename "$P" .json)" >> "$GITHUB_OUTPUT"
+          [ -n "$P" ] && echo "Épisode : $P" || echo "Rien à fabriquer (file vide ou 3 vidéos déjà en attente de validation)."
+
+      - if: steps.ep.outputs.path != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - if: steps.ep.outputs.path != ''
+        name: Outils
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q -r requirements.txt
+
+      - if: steps.ep.outputs.path != ''
+        name: Images, voix, vidéo
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ vars.ELEVENLABS_VOICE_ID }}
+          EP: ${{ steps.ep.outputs.path }}
+          ID: ${{ steps.ep.outputs.id }}
+        run: |
+          python3 fetch_images.py "$EP"
+          [ -f "voice/$ID/timings.json" ] || python3 voice.py "$EP"
+          python3 render.py "$EP" --voice "voice/$ID"
+          mkdir -p publie
+          ffmpeg -v error -y -i "out/$ID/$ID.mp4" -c:v libx264 -preset medium -crf 23 -c:a copy -movflags +faststart "publie/$ID.mp4"
+          ls -la publie
+
+      - if: steps.ep.outputs.path != ''
+        name: Mettre la vidéo en ligne (GitHub Pages, branche « videos »)
+        id: pages
+        env:
+          ID: ${{ steps.ep.outputs.id }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config --global user.name "tout-savoir-30s"
+          git config --global user.email "actions@users.noreply.github.com"
+          if git clone -q --depth 1 --branch videos "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}" site; then :; else
+            mkdir site && git -C site init -q -b videos && git -C site remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}"; fi
+          cp "publie/$ID.mp4" site/
+          touch site/.nojekyll
+          (cd site && ls -t *.mp4 | tail -n +8 | xargs -r rm -f)      # on ne garde que les 7 dernières vidéos
+          cd site && (git checkout -q --orphan propre 2>/dev/null || true) && git add -A && git commit -q -m "Vidéos en ligne" && git push -q -f origin HEAD:videos
+          OWNER="${GITHUB_REPOSITORY%%/*}"; REPO="${GITHUB_REPOSITORY##*/}"
+          URL="https://${OWNER,,}.github.io/${REPO}/${ID}.mp4"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+          for i in $(seq 1 40); do
+            [ "$(curl -s -o /dev/null -w '%{http_code}' -r 0-0 "$URL")" = "206" ] && echo "En ligne : $URL" && exit 0
+            sleep 15
+          done
+          echo "::warning::La vidéo n'est pas encore visible sur GitHub Pages ($URL). Vérifiez que Pages publie la branche « videos »."
+
+      - if: steps.ep.outputs.path != ''
+        name: Demander la validation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ID: ${{ steps.ep.outputs.id }}
+          URL: ${{ steps.pages.outputs.url }}
+        run: |
+          python3 pipeline.py statut "$ID" "à valider" "video_url=$URL"
+          git add episodes && git commit -q -m "Épisode $ID à valider [skip ci]" && git push -q
+          python3 - <<'PY' > corps.md
+          import json, os
+          ep = json.load(open(f"episodes/{os.environ['ID']}.json", encoding="utf-8"))
+          vo = "\n".join("> " + s["vo"] for s in ep["scenes"])
+          src = "\n".join("- " + s for s in ep.get("sources", [])) or "- (aucune)"
+          print(f"""## 🎬 {ep.get('titre', ep['id'])}
+
+          **[▶ Regarder la vidéo]({os.environ['URL']})**
+
+          **Voix off**
+          {vo}
+
+          **Légende** : {ep['legende']}
+          {' '.join(ep.get('hashtags', []))}
+
+          **Sources**
+          {src}
+
+          ---
+          Répondez en commentaire :
+          - `/valider` → programmée sur TikTok + Instagram à 18 h 30
+          - `/refaire` → refabriquée au prochain passage (vous pouvez ajouter une consigne après le mot)
+
+          <!-- episode: {ep['id']} -->""".replace("\n          ", "\n"))
+          PY
+          TITRE=$(python3 -c "import json,os;e=json.load(open(f'episodes/{os.environ[\"ID\"]}.json'));print(e.get('titre',e['id']))")
+          gh issue create --title "À valider · N°${ID%%-*} · $TITRE" --body-file corps.md --label "à valider" 2>/dev/null \
+            || gh issue create --title "À valider · N°${ID%%-*} · $TITRE" --body-file corps.md

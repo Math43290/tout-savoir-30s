@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""Petit registre des épisodes (champ "statut" dans chaque episodes/*.json).
+
+    python3 pipeline.py suivant                 -> chemin du prochain épisode à fabriquer (vide si rien)
+    python3 pipeline.py statut <id> <statut> [clé=valeur ...]
+    python3 pipeline.py prochain-creneau        -> prochaine publication à 18h30 (heure de Paris), en UTC ISO
+    python3 pipeline.py etat                    -> tableau récapitulatif
+
+Statuts : à faire -> à valider -> validé/publié ; « à refaire » repasse en tête de file.
+"""
+import datetime as dt, glob, json, os, sys
+from zoneinfo import ZoneInfo
+
+MAX_EN_ATTENTE = 3          # pas plus de 3 vidéos en attente de validation
+HEURE_PUBLICATION = (18, 30)
+
+
+def episodes():
+    for p in sorted(glob.glob("episodes/*.json")):
+        ep = json.load(open(p, encoding="utf-8"))
+        yield p, ep
+
+
+def save(p, ep):
+    json.dump(ep, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    open(p, "a").write("\n")
+
+
+def suivant():
+    eps = list(episodes())
+    if sum(1 for _, e in eps if e.get("statut") == "à valider") >= MAX_EN_ATTENTE:
+        return ""
+    for wanted in ("à refaire", "à faire"):
+        for p, e in eps:
+            if e.get("statut", "à faire") == wanted:
+                return p
+    return ""
+
+
+def prochain_creneau():
+    paris = ZoneInfo("Europe/Paris")
+    now = dt.datetime.now(paris)
+    t = now.replace(hour=HEURE_PUBLICATION[0], minute=HEURE_PUBLICATION[1], second=0, microsecond=0)
+    if t < now + dt.timedelta(minutes=20):
+        t += dt.timedelta(days=1)
+    return t.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+
+def main():
+    cmd = sys.argv[1]
+    if cmd == "suivant":
+        print(suivant())
+    elif cmd == "prochain-creneau":
+        print(prochain_creneau())
+    elif cmd == "statut":
+        ident, statut = sys.argv[2], sys.argv[3]
+        p = f"episodes/{ident}.json"
+        ep = json.load(open(p, encoding="utf-8"))
+        ep["statut"] = statut
+        for kv in sys.argv[4:]:
+            k, v = kv.split("=", 1)
+            ep[k] = v
+        save(p, ep)
+    elif cmd == "etat":
+        for p, e in episodes():
+            print(f'{e["id"]:<32} {e.get("statut", "à faire"):<10} {e.get("titre", "")}')
+
+
+if __name__ == "__main__":
+    main()

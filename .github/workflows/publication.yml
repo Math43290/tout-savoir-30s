@@ -1,0 +1,70 @@
+name: Publication après validation
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+jobs:
+  decider:
+    # seul le propriétaire du compte peut valider
+    if: >-
+      github.event.issue.pull_request == null &&
+      github.event.comment.user.login == github.repository_owner &&
+      (startsWith(github.event.comment.body, '/valider') || startsWith(github.event.comment.body, '/refaire'))
+    runs-on: ubuntu-latest
+    concurrency: publication
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Retrouver l'épisode
+        id: ep
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: |
+          ID=$(printf '%s' "$BODY" | sed -n 's/.*<!-- episode: \([^ ]*\) -->.*/\1/p' | head -1)
+          [ -n "$ID" ] || { echo "Épisode introuvable dans le ticket"; exit 1; }
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
+          git config --global user.name "tout-savoir-30s"
+          git config --global user.email "actions@users.noreply.github.com"
+
+      - name: Programmer sur TikTok + Instagram
+        if: startsWith(github.event.comment.body, '/valider')
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          ID: ${{ steps.ep.outputs.id }}
+        run: |
+          URL=$(python3 -c "import json,os;print(json.load(open(f'episodes/{os.environ[\"ID\"]}.json'))['video_url'])")
+          QUAND=$(python3 pipeline.py prochain-creneau)
+          python3 publish_buffer.py "episodes/$ID.json" --url "$URL" --le "$QUAND" | tee resultat.txt
+          python3 pipeline.py statut "$ID" "publié" "programme_le=$QUAND"
+          git add episodes && git commit -q -m "Épisode $ID programmé [skip ci]" && git push -q
+          { echo "✅ Programmé sur TikTok + Instagram :"; echo '```'; cat resultat.txt; echo '```'; } > msg.md
+          gh issue comment "${{ github.event.issue.number }}" --body-file msg.md
+          gh issue close "${{ github.event.issue.number }}"
+
+      - name: Refaire
+        if: startsWith(github.event.comment.body, '/refaire')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ID: ${{ steps.ep.outputs.id }}
+          CONSIGNE: ${{ github.event.comment.body }}
+        run: |
+          python3 pipeline.py statut "$ID" "à refaire" "consigne=${CONSIGNE#/refaire}"
+          rm -rf "images/$ID"                       # nouvelles images au prochain passage
+          python3 - <<'PY'
+          import json, os
+          p = f"episodes/{os.environ['ID']}.json"; ep = json.load(open(p, encoding="utf-8"))
+          for sc in ep["scenes"]:
+              if sc.get("image"): sc["image"].pop("fichier", None)
+          json.dump(ep, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+          PY
+          git add -A episodes images && git commit -q -m "Épisode $ID à refaire [skip ci]" && git push -q
+          gh issue comment "${{ github.event.issue.number }}" --body "🔁 Noté, l'épisode repasse en fabrication maintenant (nouvelles images)."
+          gh issue close "${{ github.event.issue.number }}"
+          gh workflow run fabrication.yml

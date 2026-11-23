@@ -1,0 +1,6 @@
+out/
+publie/
+site/
+.env
+__pycache__/
+*.tmp.mp4
