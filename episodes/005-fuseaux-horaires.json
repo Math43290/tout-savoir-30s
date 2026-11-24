@@ -1,0 +1,93 @@
+{
+  "id": "005-fuseaux-horaires",
+  "numero": 5,
+  "categorie": "Géographie",
+  "style": "dynamique",
+  "titre": "Le pays qui a le plus de fuseaux horaires",
+  "legende": "Ni la Russie, ni les États-Unis : le record des fuseaux horaires est français 🌍 Tu aurais trouvé ?",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#geographie",
+    "#france",
+    "#fuseauxhoraires"
+  ],
+  "sources": [
+    "https://www.guinnessworldrecords.com/world-records/584626-country-with-the-most-time-zones",
+    "https://www.timeanddate.com/time/country-with-the-most-time-zones.html"
+  ],
+  "statut": "à faire",
+  "scenes": [
+    {
+      "vo": "Le pays qui a le plus de fuseaux horaires au monde ? La France !",
+      "plans": [
+        {
+          "recherche": "world map"
+        },
+        {
+          "recherche": "eiffel tower night"
+        },
+        {
+          "recherche": "clocks"
+        }
+      ],
+      "gros": {
+        "texte": "LA FRANCE",
+        "at": "France"
+      }
+    },
+    {
+      "vo": "Ni la Russie, ni les États-Unis. Grâce à l'outre-mer, elle en compte douze.",
+      "plans": [
+        {
+          "recherche": "russia moscow"
+        },
+        {
+          "recherche": "tahiti beach"
+        },
+        {
+          "recherche": "reunion island"
+        }
+      ],
+      "gros": {
+        "texte": "12",
+        "at": "douze"
+      }
+    },
+    {
+      "vo": "Quand il est midi à Paris en hiver, il est une heure du matin à Tahiti…",
+      "plans": [
+        {
+          "recherche": "paris street day"
+        },
+        {
+          "recherche": "tahiti night"
+        }
+      ],
+      "gros": {
+        "texte": "MIDI = 1 H",
+        "at": "Tahiti",
+        "taille": 100
+      }
+    },
+    {
+      "vo": "… et déjà dix heures du soir en Nouvelle-Calédonie.",
+      "plans": [
+        {
+          "recherche": "new caledonia lagoon"
+        },
+        {
+          "recherche": "sunset tropical"
+        }
+      ]
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "globe earth"
+        }
+      ]
+    }
+  ]
+}

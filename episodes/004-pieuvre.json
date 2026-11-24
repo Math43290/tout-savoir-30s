@@ -1,0 +1,92 @@
+{
+  "id": "004-pieuvre",
+  "numero": 4,
+  "categorie": "Animaux",
+  "style": "dynamique",
+  "titre": "La pieuvre a trois cœurs",
+  "legende": "Trois cœurs, du sang bleu, et un cœur qui s'arrête quand elle nage 🐙 La pieuvre est un extraterrestre.",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#animaux",
+    "#pieuvre",
+    "#ocean"
+  ],
+  "sources": [
+    "https://www.smithsonianmag.com/science-nature/ten-curious-facts-about-octopuses-7625828/",
+    "https://www.livescience.com/how-many-hearts-does-an-octopus-have"
+  ],
+  "statut": "à faire",
+  "scenes": [
+    {
+      "vo": "La pieuvre a trois cœurs… et du sang bleu.",
+      "plans": [
+        {
+          "recherche": "octopus"
+        },
+        {
+          "recherche": "octopus underwater"
+        }
+      ],
+      "gros": {
+        "texte": "3 CŒURS",
+        "at": "trois"
+      }
+    },
+    {
+      "vo": "Deux cœurs envoient le sang vers les branchies. Le troisième, dans tout le corps.",
+      "plans": [
+        {
+          "recherche": "octopus tentacles"
+        },
+        {
+          "recherche": "octopus close up"
+        },
+        {
+          "recherche": "coral reef"
+        }
+      ]
+    },
+    {
+      "vo": "Son sang est bleu, car il transporte l'oxygène avec du cuivre, pas avec du fer comme nous.",
+      "plans": [
+        {
+          "recherche": "blue ocean water"
+        },
+        {
+          "recherche": "copper"
+        },
+        {
+          "recherche": "octopus eye"
+        }
+      ],
+      "gros": {
+        "texte": "SANG BLEU",
+        "at": "bleu"
+      }
+    },
+    {
+      "vo": "Et quand elle nage, son cœur principal s'arrête de battre !",
+      "plans": [
+        {
+          "recherche": "octopus swimming"
+        },
+        {
+          "recherche": "deep sea"
+        }
+      ],
+      "gros": {
+        "texte": "STOP",
+        "at": "arrête"
+      }
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "octopus ocean"
+        }
+      ]
+    }
+  ]
+}

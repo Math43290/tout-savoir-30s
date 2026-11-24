@@ -1,0 +1,84 @@
+{
+  "id": "008-flamants-roses",
+  "numero": 8,
+  "categorie": "Animaux",
+  "style": "dynamique",
+  "titre": "Pourquoi les flamants roses sont roses",
+  "legende": "Un flamant rose qui arrête de manger des crevettes… devient blanc 🦩 Tu le savais ?",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#animaux",
+    "#flamantrose",
+    "#nature"
+  ],
+  "sources": [
+    "https://www.nationalgeographic.com/animals/birds/facts/flamingos"
+  ],
+  "statut": "à faire",
+  "scenes": [
+    {
+      "vo": "Les flamants roses naissent… gris. Pas roses du tout.",
+      "plans": [
+        {
+          "recherche": "flamingo"
+        },
+        {
+          "recherche": "flamingo chick"
+        }
+      ],
+      "gros": {
+        "texte": "GRIS",
+        "at": "gris"
+      }
+    },
+    {
+      "vo": "Leur couleur vient de leur assiette : crevettes et algues pleines de pigments.",
+      "plans": [
+        {
+          "recherche": "shrimp"
+        },
+        {
+          "recherche": "algae water"
+        },
+        {
+          "recherche": "flamingo eating"
+        }
+      ]
+    },
+    {
+      "vo": "Les mêmes pigments que dans la carotte : les caroténoïdes.",
+      "plans": [
+        {
+          "recherche": "carrots"
+        },
+        {
+          "recherche": "carrot juice"
+        }
+      ],
+      "gros": {
+        "texte": "CAROTTE",
+        "at": "carotte"
+      }
+    },
+    {
+      "vo": "S'il arrête d'en manger, il pâlit.",
+      "plans": [
+        {
+          "recherche": "pale flamingo"
+        },
+        {
+          "recherche": "flamingo flock"
+        }
+      ]
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "flamingo sunset"
+        }
+      ]
+    }
+  ]
+}

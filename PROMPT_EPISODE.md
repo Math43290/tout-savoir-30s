@@ -4,6 +4,8 @@ Tous les nouveaux épisodes utilisent `"style": "dynamique"` (voir episodes/002-
 
 - **Sujet** : un fait *surprenant*, qui fait dire « attends, quoi ? ». Pas de cours scolaire. Bons filons : chronologies
   qui choquent (Cléopâtre plus proche de l'iPhone que des pyramides), animaux absurdes, records, idées reçues fausses.
+- **Une thématique différente chaque jour**, jamais deux fois de suite la même : tourner entre Vin, Histoire,
+  Animaux, Corps humain, Espace, Géographie, Cuisine, Sciences, Sport, Art (champ `categorie`).
 - **Phrase 1 = l'accroche** : le fait le plus fou en une phrase, tout de suite. Jamais d'introduction.
 - 5 à 6 scènes, 60–70 mots, **420 caractères maximum**, dernière scène : « Abonne-toi : un fait fou chaque jour. »
 - Chaque scène a 2 ou 3 `plans` (une photo toutes les ~2 s) : `{"recherche": "mots-clés anglais concrets"}`,

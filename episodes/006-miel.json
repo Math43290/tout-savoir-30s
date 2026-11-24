@@ -1,0 +1,88 @@
+{
+  "id": "006-miel",
+  "numero": 6,
+  "categorie": "Cuisine",
+  "style": "dynamique",
+  "titre": "Le miel ne se périme jamais ?",
+  "legende": "Le miel ne se périme pas… mais l'histoire du miel des pharaons, c'est une autre affaire 🍯 Vrai ou faux, tu dirais quoi ?",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#miel",
+    "#cuisine",
+    "#vraioufaux"
+  ],
+  "sources": [
+    "https://www.smithsonianmag.com/science-nature/the-science-behind-honeys-eternal-shelf-life-1218690/",
+    "https://www.letribunaldunet.fr/insolite/miel-ne-perime-jamais-vrai-faux-science.html"
+  ],
+  "statut": "à faire",
+  "scenes": [
+    {
+      "vo": "Le miel ne se périme jamais. Jamais.",
+      "plans": [
+        {
+          "recherche": "honey dripping"
+        },
+        {
+          "recherche": "honey jar"
+        }
+      ],
+      "gros": {
+        "texte": "JAMAIS",
+        "at": "Jamais"
+      }
+    },
+    {
+      "vo": "Il contient si peu d'eau que les microbes y meurent de soif.",
+      "plans": [
+        {
+          "recherche": "honeycomb"
+        },
+        {
+          "recherche": "bee honeycomb"
+        },
+        {
+          "recherche": "microscope"
+        }
+      ]
+    },
+    {
+      "vo": "En plus, il est acide, et les abeilles y ajoutent une enzyme qui fabrique de l'eau oxygénée.",
+      "plans": [
+        {
+          "recherche": "bees"
+        },
+        {
+          "recherche": "bee flower"
+        },
+        {
+          "recherche": "beehive"
+        }
+      ]
+    },
+    {
+      "vo": "Le miel des pharaons encore mangeable ? Ça, c'est une légende sans preuve.",
+      "plans": [
+        {
+          "recherche": "egypt tomb"
+        },
+        {
+          "recherche": "pharaoh mask"
+        }
+      ],
+      "gros": {
+        "texte": "LÉGENDE",
+        "at": "légende"
+      }
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "honey spoon"
+        }
+      ]
+    }
+  ]
+}

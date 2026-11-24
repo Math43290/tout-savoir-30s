@@ -1,0 +1,89 @@
+{
+  "id": "007-grande-muraille",
+  "numero": 7,
+  "categorie": "Histoire",
+  "style": "dynamique",
+  "titre": "Voit-on la Grande Muraille depuis l'espace ?",
+  "legende": "On l'a tous appris… et c'est faux 🚀 Même l'astronaute chinois ne l'a pas vue.",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#histoire",
+    "#chine",
+    "#espace"
+  ],
+  "sources": [
+    "https://www.nasa.gov/wp-content/uploads/static/history/PDFs/great_wall_less_great_from_space.pdf",
+    "https://www.livescience.com/34212-great-wall-of-china-only-manmade-object-visible-from-space.html"
+  ],
+  "statut": "à faire",
+  "scenes": [
+    {
+      "vo": "On ne voit pas la Grande Muraille de Chine depuis l'espace. C'est faux.",
+      "plans": [
+        {
+          "recherche": "great wall of china"
+        },
+        {
+          "recherche": "earth from space"
+        }
+      ],
+      "gros": {
+        "texte": "FAUX",
+        "at": "faux"
+      }
+    },
+    {
+      "vo": "Elle est pourtant immense : plus de vingt et un mille kilomètres.",
+      "plans": [
+        {
+          "recherche": "great wall mountains"
+        },
+        {
+          "recherche": "great wall aerial"
+        },
+        {
+          "recherche": "great wall winter"
+        }
+      ],
+      "gros": {
+        "texte": "21 196 KM",
+        "at": "kilomètres"
+      }
+    },
+    {
+      "vo": "Mais elle ne fait que quelques mètres de large, et sa couleur se confond avec le paysage.",
+      "plans": [
+        {
+          "recherche": "great wall close up"
+        },
+        {
+          "recherche": "chinese mountains"
+        }
+      ]
+    },
+    {
+      "vo": "Depuis la Station spatiale, à quatre cents kilomètres, on ne la distingue pas à l'œil nu.",
+      "plans": [
+        {
+          "recherche": "international space station"
+        },
+        {
+          "recherche": "astronaut window"
+        }
+      ],
+      "gros": {
+        "texte": "400 KM",
+        "at": "quatre"
+      }
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "great wall sunset"
+        }
+      ]
+    }
+  ]
+}

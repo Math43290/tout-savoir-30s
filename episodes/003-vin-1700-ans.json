@@ -1,0 +1,102 @@
+{
+  "id": "003-vin-1700-ans",
+  "numero": 3,
+  "categorie": "Vin",
+  "style": "dynamique",
+  "titre": "La plus vieille bouteille de vin du monde",
+  "legende": "Une bouteille de vin de 1 700 ans, jamais ouverte 🍷 Tu la goûterais ?",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#vin",
+    "#histoire"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Speyer_wine_bottle"
+  ],
+  "statut": "à faire",
+  "scenes": [
+    {
+      "vo": "Il existe une bouteille de vin de mille sept cents ans… et personne ne l'a jamais ouverte.",
+      "plans": [
+        {
+          "recherche": "old wine bottle"
+        },
+        {
+          "recherche": "wine cellar dark"
+        },
+        {
+          "recherche": "roman ruins"
+        }
+      ]
+    },
+    {
+      "vo": "Elle a été retrouvée en 1867, dans la tombe d'un couple romain, en Allemagne.",
+      "plans": [
+        {
+          "recherche": "roman sarcophagus"
+        },
+        {
+          "recherche": "archaeology excavation"
+        },
+        {
+          "recherche": "germany old town"
+        }
+      ],
+      "gros": {
+        "texte": "1867",
+        "at": "1867"
+      }
+    },
+    {
+      "vo": "Seize bouteilles dans la tombe. Une seule est restée intacte, avec son liquide.",
+      "plans": [
+        {
+          "recherche": "glass bottles"
+        },
+        {
+          "recherche": "antique glass bottle"
+        }
+      ],
+      "gros": {
+        "texte": "1 SUR 16",
+        "at": "seule"
+      }
+    },
+    {
+      "vo": "Le secret : une épaisse couche d'huile d'olive qui a scellé le vin.",
+      "plans": [
+        {
+          "recherche": "olive oil"
+        },
+        {
+          "recherche": "olive oil pouring"
+        }
+      ],
+      "gros": {
+        "texte": "HUILE D'OLIVE",
+        "at": "huile",
+        "taille": 96
+      }
+    },
+    {
+      "vo": "Les experts pensent qu'on pourrait la boire… mais ce serait affreux.",
+      "plans": [
+        {
+          "recherche": "wine tasting"
+        },
+        {
+          "recherche": "grimace face"
+        }
+      ]
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "red wine glass"
+        }
+      ]
+    }
+  ]
+}
