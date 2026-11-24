@@ -16,19 +16,22 @@
     "https://www.smithsonianmag.com/ (dernier mammouths de l'île Wrangel, il y a ~4 000 ans)",
     "https://www.britannica.com/one-good-fact/how-was-ancient-egypt-ancient-even-to-cleopatra (Grande Pyramide, XXVIe–XXVe s. av. J.-C.)"
   ],
-  "statut": "à faire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Les mammouths étaient encore vivants quand les pyramides d'Égypte existaient déjà.",
       "plans": [
         {
-          "recherche": "woolly mammoth"
+          "recherche": "woolly mammoth",
+          "fichier": "images/002-mammouths/scene01_1.jpg"
         },
         {
-          "recherche": "pyramids giza"
+          "recherche": "pyramids giza",
+          "fichier": "images/002-mammouths/scene01_2.jpg"
         },
         {
-          "recherche": "mammoth snow"
+          "recherche": "mammoth snow",
+          "fichier": "images/002-mammouths/scene01_3.jpg"
         }
       ]
     },
@@ -36,13 +39,16 @@
       "vo": "La plupart ont disparu il y a dix mille ans, à la fin de l'ère glaciaire.",
       "plans": [
         {
-          "recherche": "glacier ice"
+          "recherche": "glacier ice",
+          "fichier": "images/002-mammouths/scene02_1.jpg"
         },
         {
-          "recherche": "frozen tundra"
+          "recherche": "frozen tundra",
+          "fichier": "images/002-mammouths/scene02_2.jpg"
         },
         {
-          "recherche": "ice cave"
+          "recherche": "ice cave",
+          "fichier": "images/002-mammouths/scene02_3.jpg"
         }
       ],
       "gros": {
@@ -54,13 +60,16 @@
       "vo": "Mais quelques centaines ont survécu sur une île perdue de l'Arctique : l'île Wrangel.",
       "plans": [
         {
-          "recherche": "arctic island"
+          "recherche": "arctic island",
+          "fichier": "images/002-mammouths/scene03_1.jpg"
         },
         {
-          "recherche": "sea ice arctic ocean"
+          "recherche": "sea ice arctic ocean",
+          "fichier": "images/002-mammouths/scene03_2.jpg"
         },
         {
-          "recherche": "arctic tundra coast"
+          "recherche": "arctic tundra coast",
+          "fichier": "images/002-mammouths/scene03_3.jpg"
         }
       ],
       "gros": {
@@ -72,10 +81,12 @@
       "vo": "Le tout dernier est mort il y a environ quatre mille ans.",
       "plans": [
         {
-          "recherche": "mammoth skeleton"
+          "recherche": "mammoth skeleton",
+          "fichier": "images/002-mammouths/scene04_1.jpg"
         },
         {
-          "recherche": "mammoth tusk"
+          "recherche": "mammoth tusk",
+          "fichier": "images/002-mammouths/scene04_2.jpg"
         }
       ],
       "gros": {
@@ -87,10 +98,12 @@
       "vo": "À ce moment-là, la grande pyramide avait déjà plusieurs siècles !",
       "plans": [
         {
-          "recherche": "great pyramid giza"
+          "recherche": "great pyramid giza",
+          "fichier": "images/002-mammouths/scene05_1.jpg"
         },
         {
-          "recherche": "sphinx egypt"
+          "recherche": "sphinx egypt",
+          "fichier": "images/002-mammouths/scene05_2.jpg"
         }
       ],
       "gros": {
@@ -102,9 +115,11 @@
       "vo": "Abonne-toi : un fait fou chaque jour.",
       "plans": [
         {
-          "recherche": "pyramids night stars"
+          "recherche": "pyramids night stars",
+          "fichier": "images/002-mammouths/scene06_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/002-mammouths.mp4"
 }
