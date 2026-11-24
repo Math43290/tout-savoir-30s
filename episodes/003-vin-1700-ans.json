@@ -14,19 +14,22 @@
   "sources": [
     "https://en.wikipedia.org/wiki/Speyer_wine_bottle"
   ],
-  "statut": "à faire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Il existe une bouteille de vin de mille sept cents ans… et personne ne l'a jamais ouverte.",
       "plans": [
         {
-          "recherche": "old wine bottle"
+          "recherche": "old wine bottle",
+          "fichier": "images/003-vin-1700-ans/scene01_1.jpg"
         },
         {
-          "recherche": "wine cellar dark"
+          "recherche": "wine cellar dark",
+          "fichier": "images/003-vin-1700-ans/scene01_2.jpg"
         },
         {
-          "recherche": "roman ruins"
+          "recherche": "roman ruins",
+          "fichier": "images/003-vin-1700-ans/scene01_3.jpg"
         }
       ]
     },
@@ -34,13 +37,16 @@
       "vo": "Elle a été retrouvée en 1867, dans la tombe d'un couple romain, en Allemagne.",
       "plans": [
         {
-          "recherche": "roman sarcophagus"
+          "recherche": "roman sarcophagus",
+          "fichier": "images/003-vin-1700-ans/scene02_1.jpg"
         },
         {
-          "recherche": "archaeology excavation"
+          "recherche": "archaeology excavation",
+          "fichier": "images/003-vin-1700-ans/scene02_2.jpg"
         },
         {
-          "recherche": "germany old town"
+          "recherche": "germany old town",
+          "fichier": "images/003-vin-1700-ans/scene02_3.jpg"
         }
       ],
       "gros": {
@@ -52,10 +58,12 @@
       "vo": "Seize bouteilles dans la tombe. Une seule est restée intacte, avec son liquide.",
       "plans": [
         {
-          "recherche": "glass bottles"
+          "recherche": "glass bottles",
+          "fichier": "images/003-vin-1700-ans/scene03_1.jpg"
         },
         {
-          "recherche": "antique glass bottle"
+          "recherche": "antique glass bottle",
+          "fichier": "images/003-vin-1700-ans/scene03_2.jpg"
         }
       ],
       "gros": {
@@ -67,10 +75,12 @@
       "vo": "Le secret : une épaisse couche d'huile d'olive qui a scellé le vin.",
       "plans": [
         {
-          "recherche": "olive oil"
+          "recherche": "olive oil",
+          "fichier": "images/003-vin-1700-ans/scene04_1.jpg"
         },
         {
-          "recherche": "olive oil pouring"
+          "recherche": "olive oil pouring",
+          "fichier": "images/003-vin-1700-ans/scene04_2.jpg"
         }
       ],
       "gros": {
@@ -83,10 +93,12 @@
       "vo": "Les experts pensent qu'on pourrait la boire… mais ce serait affreux.",
       "plans": [
         {
-          "recherche": "wine tasting"
+          "recherche": "wine tasting",
+          "fichier": "images/003-vin-1700-ans/scene05_1.jpg"
         },
         {
-          "recherche": "grimace face"
+          "recherche": "grimace face",
+          "fichier": "images/003-vin-1700-ans/scene05_2.jpg"
         }
       ]
     },
@@ -94,9 +106,11 @@
       "vo": "Abonne-toi : un fait fou chaque jour.",
       "plans": [
         {
-          "recherche": "red wine glass"
+          "recherche": "red wine glass",
+          "fichier": "images/003-vin-1700-ans/scene06_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/003-vin-1700-ans.mp4"
 }
