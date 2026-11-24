@@ -16,16 +16,18 @@
     "https://www.smithsonianmag.com/science-nature/ten-curious-facts-about-octopuses-7625828/",
     "https://www.livescience.com/how-many-hearts-does-an-octopus-have"
   ],
-  "statut": "à faire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "La pieuvre a trois cœurs… et du sang bleu.",
       "plans": [
         {
-          "recherche": "octopus"
+          "recherche": "octopus",
+          "fichier": "images/004-pieuvre/scene01_1.jpg"
         },
         {
-          "recherche": "octopus underwater"
+          "recherche": "octopus underwater",
+          "fichier": "images/004-pieuvre/scene01_2.jpg"
         }
       ],
       "gros": {
@@ -37,13 +39,16 @@
       "vo": "Deux cœurs envoient le sang vers les branchies. Le troisième, dans tout le corps.",
       "plans": [
         {
-          "recherche": "octopus tentacles"
+          "recherche": "octopus tentacles",
+          "fichier": "images/004-pieuvre/scene02_1.jpg"
         },
         {
-          "recherche": "octopus close up"
+          "recherche": "octopus close up",
+          "fichier": "images/004-pieuvre/scene02_2.jpg"
         },
         {
-          "recherche": "coral reef"
+          "recherche": "coral reef",
+          "fichier": "images/004-pieuvre/scene02_3.jpg"
         }
       ]
     },
@@ -51,13 +56,16 @@
       "vo": "Son sang est bleu, car il transporte l'oxygène avec du cuivre, pas avec du fer comme nous.",
       "plans": [
         {
-          "recherche": "blue ocean water"
+          "recherche": "blue ocean water",
+          "fichier": "images/004-pieuvre/scene03_1.jpg"
         },
         {
-          "recherche": "copper"
+          "recherche": "copper",
+          "fichier": "images/004-pieuvre/scene03_2.jpg"
         },
         {
-          "recherche": "octopus eye"
+          "recherche": "octopus eye",
+          "fichier": "images/004-pieuvre/scene03_3.jpg"
         }
       ],
       "gros": {
@@ -69,10 +77,12 @@
       "vo": "Et quand elle nage, son cœur principal s'arrête de battre !",
       "plans": [
         {
-          "recherche": "octopus swimming"
+          "recherche": "octopus swimming",
+          "fichier": "images/004-pieuvre/scene04_1.jpg"
         },
         {
-          "recherche": "deep sea"
+          "recherche": "deep sea",
+          "fichier": "images/004-pieuvre/scene04_2.jpg"
         }
       ],
       "gros": {
@@ -84,9 +94,11 @@
       "vo": "Abonne-toi : un fait fou chaque jour.",
       "plans": [
         {
-          "recherche": "octopus ocean"
+          "recherche": "octopus ocean",
+          "fichier": "images/004-pieuvre/scene05_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/004-pieuvre.mp4"
 }
