@@ -45,6 +45,10 @@ def prochain_creneau(maintenant=False):
     t = now.replace(hour=HEURE_PUBLICATION[0], minute=HEURE_PUBLICATION[1], second=0, microsecond=0)
     if t < now + dt.timedelta(minutes=20):
         t += dt.timedelta(days=1)
+    # une seule vidéo par soir : on saute les soirs déjà programmés
+    pris = {e.get("programme_le", "")[:10] for _, e in episodes() if e.get("programme_le")}
+    while t.astimezone(dt.timezone.utc).strftime("%Y-%m-%d") in pris:
+        t += dt.timedelta(days=1)
     return t.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
 
 
