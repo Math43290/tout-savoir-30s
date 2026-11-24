@@ -73,6 +73,7 @@ jobs:
           p = f"episodes/{os.environ['ID']}.json"; ep = json.load(open(p, encoding="utf-8"))
           for sc in ep["scenes"]:
               if sc.get("image"): sc["image"].pop("fichier", None)
+              for pl in sc.get("plans") or []: pl.pop("fichier", None)
           json.dump(ep, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
           PY
           git add -A episodes images && git commit -q -m "Épisode $ID à refaire [skip ci]" && git push -q

@@ -637,12 +637,175 @@ ORDER = ["tower", "temp", "bar", "equation", "chiffre", "comparaison", "liste", 
          "note", "tag", "title", "outro"]
 
 
+
+# =====================================================================
+# Style « dynamique » (v2) : plans plein écran qui changent toutes les ~2 s,
+# zoom « punch » à chaque coupe, gros sous-titres centrés, tampons de chiffres.
+# Activé par "style": "dynamique" dans l'épisode.
+# =====================================================================
+YEL = (255, 214, 10)
+WHITE = (255, 255, 255)
+_VIVID = {}
+
+
+def load_vivid(path):
+    if path in _VIVID:
+        return _VIVID[path]
+    from PIL import Image, ImageOps, ImageEnhance
+    im = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+    tw, th = int(W * 1.16), int(H * 1.16)
+    sc = max(tw / im.width, th / im.height)
+    im = im.resize((max(tw, int(im.width * sc + 1)), max(th, int(im.height * sc + 1))), Image.LANCZOS)
+    l, t = (im.width - tw) // 2, (im.height - th) // 2
+    im = im.crop((l, t, l + tw, t + th))
+    im = ImageEnhance.Color(im).enhance(1.18)
+    im = ImageEnhance.Contrast(im).enhance(1.08)
+    a = np.asarray(im)
+    rgba = np.dstack([a, np.full(a.shape[:2], 255, np.uint8)])
+    img = skia.Image.fromarray(np.ascontiguousarray(rgba), colorType=skia.kRGBA_8888_ColorType)
+    _VIVID[path] = img
+    return img
+
+
+def plan_cuts(sc):
+    """Découpe la scène en plans : au mot "at" si donné, sinon à intervalles réguliers."""
+    plans = [p for p in (sc.get("plans") or []) if p.get("fichier")]
+    if not plans:
+        return []
+    n, d = len(plans), sc["dur"]
+    cuts = []
+    for k, p in enumerate(plans):
+        t0 = 0.0 if k == 0 else (word_time(sc["words"], p["at"], d * k / n) if p.get("at") else d * k / n)
+        cuts.append((t0, p))
+    return cuts
+
+
+def draw_plans(c, sc, t, gidx):
+    cuts = plan_cuts(sc)
+    if not cuts:
+        c.clear(INK)
+        return
+    k = max(i for i, (t0, _) in enumerate(cuts) if t0 <= t + 1e-6)
+    t0, p = cuts[k]
+    t1 = cuts[k + 1][0] if k + 1 < len(cuts) else sc["dur"]
+    lt, seg = t - t0, max(t1 - t0, 0.3)
+    path = p["fichier"] if os.path.isabs(p["fichier"]) else os.path.join(sc["base_dir"], p["fichier"])
+    img = load_vivid(path)
+    n = gidx + k                                   # alterne les mouvements d'un plan à l'autre
+    punch = 0.14 * (1 - ease_out(prog(lt, 0, 0.32)))
+    drift = 0.06 * clamp(lt / seg)
+    z = 1.0 + punch + (drift if n % 2 == 0 else 0.06 - drift)
+    dirx = (-1, 1, 0, 0)[n % 4]
+    diry = (0, 0, -1, 1)[n % 4]
+    m = (W * 0.16) / 2 * 0.85
+    cx = W / 2 + dirx * m * (2 * clamp(lt / seg) - 1)
+    cy = H / 2 + diry * m * (2 * clamp(lt / seg) - 1)
+    w, h = W * 1.16 * z, H * 1.16 * z
+    c.clear(INK)
+    c.drawImageRect(img, skia.Rect(cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2),
+                    skia.SamplingOptions(skia.FilterMode.kLinear), skia.Paint(AntiAlias=True))
+    # assombrit juste ce qu'il faut pour lire le texte
+    for y0, y1, ca, cb in ((0, 420, 0.55, 0.0), (900, 1500, 0.0, 0.35), (1500, H, 0.35, 0.6)):
+        sh = skia.GradientShader.MakeLinear([(0, y0), (0, y1)], [skia.Color(0, 0, 0, int(255 * ca)),
+                                                                skia.Color(0, 0, 0, int(255 * cb))])
+        c.drawRect(skia.Rect(0, y0, W, y1), skia.Paint(Shader=sh))
+    # flash blanc à la coupe
+    if lt < 0.12 and not (k == 0 and sc["index"] == 0):
+        c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Color=skia.Color(255, 255, 255, int(150 * (1 - lt / 0.12)))))
+
+
+def stroked_text(c, s, x, y, font, fill, a=1.0, stroke_w=12):
+    st = skia.Paint(AntiAlias=True, Color=skia.Color(0, 0, 0, int(255 * a)), Style=skia.Paint.kStroke_Style,
+                    StrokeWidth=stroke_w, StrokeJoin=skia.Paint.kRound_Join)
+    sh = skia.Paint(AntiAlias=True, Color=skia.Color(0, 0, 0, int(110 * a)),
+                    MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 14))
+    c.drawString(s, x, y + 10, font, sh)
+    c.drawString(s, x, y, font, st)
+    c.drawString(s, x, y, font, skia.Paint(AntiAlias=True, Color=col(fill, a)))
+
+
+def draw_captions_dyn(c, words, t, y=1260):
+    chunks = chunk_words(words, max_words=3, max_chars=16)
+    for i, ch in enumerate(chunks):
+        s, e = ch[0]["start"], ch[-1]["end"]
+        nxt = chunks[i + 1][0]["start"] if i + 1 < len(chunks) else e + 0.5
+        if not (s <= t < max(e, nxt)):
+            continue
+        size = 100
+        f = skia.Font(SANS_B, size)
+        txt = [w["word"].rstrip(",.:").upper() for w in ch]
+        sp = f.measureText(" ")
+        widths = [f.measureText(x) for x in txt]
+        tw = sum(widths) + sp * (len(txt) - 1)
+        if tw > W - 120:
+            k = (W - 120) / tw
+            f = skia.Font(SANS_B, size * k); sp *= k; widths = [x * k for x in widths]; tw = W - 120
+        pop = ease_out(prog(t, s, 0.13))
+        sc = 1.28 - 0.28 * pop
+        c.save()
+        c.translate(W / 2, y)
+        c.scale(sc, sc)
+        c.rotate(-2.0 * (1 - pop))
+        x = -tw / 2
+        for w, wd, word in zip(ch, widths, txt):
+            hot = w["start"] <= t < w["end"] + 0.06
+            stroked_text(c, word, x, 0, f, YEL if hot else WHITE, clamp(pop * 1.4))
+            x += wd + sp
+        c.restore()
+
+
+def draw_sticker(c, text, cx, cy, t, start, size=74, fill=YEL, ink=(0, 0, 0), rot=-3.0, dur=None):
+    if t < start or (dur and t > start + dur):
+        return
+    p = ease_out(prog(t, start, 0.22))
+    bounce = 1 + 0.18 * math.sin(clamp((t - start) / 0.22) * math.pi) if t - start < 0.22 else 1
+    f = skia.Font(SANS_B, size)
+    tw = f.measureText(text)
+    pad_x, pad_y = size * 0.42, size * 0.30
+    c.save()
+    c.translate(cx, cy)
+    c.rotate(rot)
+    c.scale(p * bounce, p * bounce)
+    r = skia.Rect(-tw / 2 - pad_x, -size * 0.72 - pad_y, tw / 2 + pad_x, size * 0.22 + pad_y)
+    c.drawRRect(skia.RRect.MakeRectXY(r.makeOffset(0, 10), 18, 18),
+                skia.Paint(AntiAlias=True, Color=skia.Color(0, 0, 0, 90), MaskFilter=skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 12)))
+    c.drawRRect(skia.RRect.MakeRectXY(r, 18, 18), skia.Paint(AntiAlias=True, Color=col(fill)))
+    c.drawString(text, -tw / 2, 0, f, skia.Paint(AntiAlias=True, Color=col(ink)))
+    c.restore()
+
+
+def draw_brand_dyn(c, T, total):
+    f = skia.Font(SANS_B, 30)
+    stroked_text(c, "TOUT SAVOIR EN 30 S", 70, 150, f, WHITE, 0.95, 6)
+    c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(70, 176, W - 70, 186), 5, 5), skia.Paint(AntiAlias=True, Color=skia.Color(255, 255, 255, 70)))
+    c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(70, 176, 70 + (W - 140) * clamp(T / total), 186), 5, 5),
+                skia.Paint(AntiAlias=True, Color=col(YEL)))
+
+
+def render_frame_dyn(c, sc, t, total):
+    T = sc["start"] + t
+    draw_plans(c, sc, t, sc.get("plan_offset", 0))
+    i = sc["index"]
+    if i == 0:
+        draw_sticker(c, sc.get("accroche") or "LE SAVIEZ-VOUS ?", W / 2, 470, t, 0.0, 78, YEL, rot=-3)
+    g = sc.get("gros")
+    if g:
+        st = word_time(sc["words"], g["at"], 0.3) if g.get("at") else 0.3
+        draw_sticker(c, g["texte"], W / 2, 820, t, st, g.get("taille", 120), WHITE, rot=2.5)
+    if sc.get("last"):
+        end = sc["words"][-1]["end"] if sc["words"] else sc["dur"] - 1.2
+        draw_sticker(c, "ABONNE-TOI", W / 2, 760, t, end + 0.05, 110, YEL, rot=-3)
+        draw_sticker(c, "1 FAIT FOU / JOUR", W / 2, 930, t, end + 0.2, 64, WHITE, rot=2)
+    draw_captions_dyn(c, sc["words"], t)
+    draw_brand_dyn(c, T, total)
+
+
 # ---------- Timeline ----------
 def build_timeline(ep, voice_dir=None, base_dir="."):
     timings = None
     if voice_dir and os.path.exists(os.path.join(voice_dir, "timings.json")):
         timings = json.load(open(os.path.join(voice_dir, "timings.json")))
-    scenes, T = [], 0.0
+    scenes, T, off = [], 0.0, 0
     for i, sc in enumerate(ep["scenes"]):
         if timings:
             words = timings["scenes"][i]["words"]
@@ -651,13 +814,18 @@ def build_timeline(ep, voice_dir=None, base_dir="."):
             words, dur = estimate_words(sc["vo"])
         if i == len(ep["scenes"]) - 1:
             dur += 1.2  # laisser respirer la fin
-        scenes.append({"index": i, "start": T, "dur": dur, "words": words, "elements": sc["elements"],
-                       "image": sc.get("image"), "base_dir": base_dir})
+        scenes.append({"index": i, "start": T, "dur": dur, "words": words, "elements": sc.get("elements", []),
+                       "image": sc.get("image"), "base_dir": base_dir, "style": ep.get("style"),
+                       "plans": sc.get("plans"), "gros": sc.get("gros"), "accroche": ep.get("accroche"),
+                       "plan_offset": off, "last": i == len(ep["scenes"]) - 1})
+        off += len(sc.get("plans") or [])
         T += dur
     return scenes, T
 
 
 def render_frame(c, sc, t, total):
+    if sc.get("style") == "dynamique":
+        return render_frame_dyn(c, sc, t, total)
     T = sc["start"] + t
     draw_background(c, T)
     if sc.get("image"):
@@ -678,7 +846,7 @@ def render_frame(c, sc, t, total):
 
 def to_rgb(surface, T):
     arr = surface.toarray()[:, :, 2::-1].astype(np.int16)  # BGRA -> RGB
-    arr += GRAIN[0]  # grain fixe : texture papier, fichier léger
+    arr += GRAIN[0] // 2  # grain fixe : texture papier, fichier léger
     np.clip(arr, 0, 255, out=arr)
     return arr.astype(np.uint8)
 
@@ -752,7 +920,24 @@ def main():
                     "-c", "copy", "-movflags", "+faststart", silent], check=True, timeout=120)
     final = os.path.join(outdir, f"{ep['id']}.mp4")
     audio = os.path.join(a.voice, "audio.mp3") if a.voice else None
-    if audio and os.path.exists(audio):
+    if ep.get("style") == "dynamique" and ep.get("musique", True):
+        import music
+        cuts = [sc["start"] + t0 for sc in scenes for t0, _ in plan_cuts(sc)][1:]
+        wav = os.path.join(outdir, "musique.wav")
+        custom = os.path.join(HERE, "musique", f"{ep.get('musique')}.mp3") if isinstance(ep.get("musique"), str) else None
+        if not (custom and os.path.exists(custom)):
+            music.make(total, cuts, wav)
+            custom = wav
+        vol = str(ep.get("volume_musique", 0.22))
+        inputs = ["-i", silent] + (["-i", audio] if audio and os.path.exists(audio) else []) + ["-i", custom]
+        mi = 2 if len(inputs) == 6 else 1
+        filt = (f"[{mi}:a]volume={vol},atrim=0:{total:.2f}[m];" +
+                ("[1:a]apad,atrim=0:%.2f,volume=1.0[v];[v][m]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[a]" % total
+                 if mi == 2 else "[m]anull[a]"))
+        subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", *inputs, "-filter_complex", filt,
+                        "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", f"{total:.2f}",
+                        "-movflags", "+faststart", final], check=True, timeout=180)
+    elif audio and os.path.exists(audio):
         subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", silent, "-i", audio, "-map", "0:v", "-map", "1:a",
                         "-c:v", "copy", "-af", "apad", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", final], check=True)
     else:

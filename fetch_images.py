@@ -38,11 +38,16 @@ def pexels(query, used):
 
 
 def pixabay(query, used):
-    url = "https://pixabay.com/api/?" + urllib.parse.urlencode(
-        {"key": os.environ["PIXABAY_API_KEY"].strip(), "q": query, "image_type": "photo", "orientation": "vertical",
-         "per_page": 20, "safesearch": "true", "min_height": 1600})
-    res = json.loads(get(url))
-    for h in res.get("hits", []):
+    hits = []
+    # d'abord des photos verticales ; sinon on élargit (illustrations, format paysage recadré)
+    for typ, ori in (("photo", "vertical"), ("photo", "all"), ("all", "all")):
+        url = "https://pixabay.com/api/?" + urllib.parse.urlencode(
+            {"key": os.environ["PIXABAY_API_KEY"].strip(), "q": query, "image_type": typ, "orientation": ori,
+             "per_page": 20, "safesearch": "true", "min_height": 1080, "order": "popular"})
+        hits = [h for h in json.loads(get(url)).get("hits", []) if h["id"] not in used]
+        if hits:
+            break
+    for h in hits:
         if h["id"] not in used:
             used.add(h["id"])
             return get(h["largeImageURL"]), f'Image : {h["user"]} / Pixabay ({h["pageURL"]})'
@@ -84,8 +89,14 @@ def main():
     out = os.path.join("images", ep["id"])
     os.makedirs(out, exist_ok=True)
     credits, used = [], set()
+    jobs = []
     for i, sc in enumerate(ep["scenes"]):
-        im = sc.get("image")
+        if sc.get("plans"):                          # style dynamique : plusieurs plans par scène
+            jobs += [(f"{i + 1:02d}_{k + 1}", f"Scène {i + 1}.{k + 1}", p) for k, p in enumerate(sc["plans"])]
+        elif sc.get("image"):
+            jobs.append((f"{i + 1:02d}", f"Scène {i + 1}", sc["image"]))
+    for tag, label, im in jobs:
+        i = 0
         if not im or (im.get("fichier") and os.path.exists(im["fichier"])):
             continue
         try:
@@ -101,17 +112,17 @@ def main():
                 try:
                     data, credit = fn(q, used)
                 except Exception as e:
-                    print(f"Scène {i + 1} : {name} : {e}", file=sys.stderr)
+                    print(f"{label} : {name} : {e}", file=sys.stderr)
             if not data:
-                print(f"Scène {i + 1} : aucune image trouvée", file=sys.stderr)
+                print(f"{label} : aucune image trouvée", file=sys.stderr)
                 continue
         except Exception as e:                       # une image manquante ne bloque pas la vidéo
-            print(f"Scène {i + 1} : {e}", file=sys.stderr)
+            print(f"{label} : {e}", file=sys.stderr)
             continue
-        f = os.path.join(out, f"scene{i + 1:02d}.jpg")
+        f = os.path.join(out, f"scene{tag}.jpg")
         open(f, "wb").write(data)
         im["fichier"] = f
-        credits.append(f"Scène {i + 1} : {credit}")
+        credits.append(f"{label} : {credit}")
         print(f, "-", credit)
     open(os.path.join(out, "credits.txt"), "w", encoding="utf-8").write("\n".join(credits) + "\n")
     json.dump(ep, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)

@@ -1,3 +1,19 @@
+# ⚡ FORMAT PAR DÉFAUT : « Le saviez-vous » dynamique (v2)
+
+Tous les nouveaux épisodes utilisent `"style": "dynamique"` (voir episodes/002-mammouths.json).
+
+- **Sujet** : un fait *surprenant*, qui fait dire « attends, quoi ? ». Pas de cours scolaire. Bons filons : chronologies
+  qui choquent (Cléopâtre plus proche de l'iPhone que des pyramides), animaux absurdes, records, idées reçues fausses.
+- **Phrase 1 = l'accroche** : le fait le plus fou en une phrase, tout de suite. Jamais d'introduction.
+- 5 à 6 scènes, 60–70 mots, **420 caractères maximum**, dernière scène : « Abonne-toi : un fait fou chaque jour. »
+- Chaque scène a 2 ou 3 `plans` (une photo toutes les ~2 s) : `{"recherche": "mots-clés anglais concrets"}`,
+  sujet visible et photogénique (pas d'abstrait). Option `"at": "mot"` pour couper sur un mot précis.
+- Option `"gros": {"texte": "-4 000 ANS", "at": "quatre"}` : tampon géant (chiffre ou 2 mots max) sur le mot-clé.
+- Pas de bloc `elements`, pas d'`image` : ce sont des champs de l'ancien format.
+- Chaque fait est vérifié avec une source fiable listée dans `sources`.
+
+---
+
 # Prompt de génération d'un épisode (à coller dans le nœud Claude de n8n)
 
 Tu écris un épisode de la série TikTok « Tout savoir en 30 s ».

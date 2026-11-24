@@ -1,0 +1,110 @@
+{
+  "id": "002-mammouths",
+  "numero": 2,
+  "categorie": "Histoire",
+  "style": "dynamique",
+  "titre": "Les mammouths ont vu les pyramides",
+  "legende": "Les mammouths étaient encore là quand les pyramides existaient déjà 🦣🔺 Tu le savais ?",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#histoire",
+    "#mammouth",
+    "#apprendresurtiktok"
+  ],
+  "sources": [
+    "https://www.smithsonianmag.com/ (dernier mammouths de l'île Wrangel, il y a ~4 000 ans)",
+    "https://www.britannica.com/one-good-fact/how-was-ancient-egypt-ancient-even-to-cleopatra (Grande Pyramide, XXVIe–XXVe s. av. J.-C.)"
+  ],
+  "statut": "à faire",
+  "scenes": [
+    {
+      "vo": "Les mammouths étaient encore vivants quand les pyramides d'Égypte existaient déjà.",
+      "plans": [
+        {
+          "recherche": "woolly mammoth"
+        },
+        {
+          "recherche": "pyramids giza"
+        },
+        {
+          "recherche": "mammoth snow"
+        }
+      ]
+    },
+    {
+      "vo": "La plupart ont disparu il y a dix mille ans, à la fin de l'ère glaciaire.",
+      "plans": [
+        {
+          "recherche": "glacier ice"
+        },
+        {
+          "recherche": "frozen tundra"
+        },
+        {
+          "recherche": "ice cave"
+        }
+      ],
+      "gros": {
+        "texte": "-10 000 ANS",
+        "at": "dix"
+      }
+    },
+    {
+      "vo": "Mais quelques centaines ont survécu sur une île perdue de l'Arctique : l'île Wrangel.",
+      "plans": [
+        {
+          "recherche": "arctic island"
+        },
+        {
+          "recherche": "sea ice arctic ocean"
+        },
+        {
+          "recherche": "arctic tundra coast"
+        }
+      ],
+      "gros": {
+        "texte": "ÎLE WRANGEL",
+        "at": "Wrangel"
+      }
+    },
+    {
+      "vo": "Le tout dernier est mort il y a environ quatre mille ans.",
+      "plans": [
+        {
+          "recherche": "mammoth skeleton"
+        },
+        {
+          "recherche": "mammoth tusk"
+        }
+      ],
+      "gros": {
+        "texte": "-4 000 ANS",
+        "at": "quatre"
+      }
+    },
+    {
+      "vo": "À ce moment-là, la grande pyramide avait déjà plusieurs siècles !",
+      "plans": [
+        {
+          "recherche": "great pyramid giza"
+        },
+        {
+          "recherche": "sphinx egypt"
+        }
+      ],
+      "gros": {
+        "texte": "DÉJÀ VIEILLE",
+        "at": "siècles"
+      }
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "pyramids night stars"
+        }
+      ]
+    }
+  ]
+}
