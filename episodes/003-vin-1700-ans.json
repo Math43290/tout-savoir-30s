@@ -14,14 +14,13 @@
   "sources": [
     "https://en.wikipedia.org/wiki/Speyer_wine_bottle"
   ],
-  "statut": "à valider",
+  "statut": "à refaire",
   "scenes": [
     {
       "vo": "Il existe une bouteille de vin de mille sept cents ans… et personne ne l'a jamais ouverte.",
       "plans": [
         {
-          "recherche": "old wine bottle",
-          "fichier": "images/003-vin-1700-ans/scene01_1.jpg"
+          "recherche": "wine cellar barrels"
         },
         {
           "recherche": "wine cellar dark",
