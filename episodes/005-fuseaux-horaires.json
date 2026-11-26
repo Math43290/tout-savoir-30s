@@ -16,19 +16,22 @@
     "https://www.guinnessworldrecords.com/world-records/584626-country-with-the-most-time-zones",
     "https://www.timeanddate.com/time/country-with-the-most-time-zones.html"
   ],
-  "statut": "à faire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Le pays qui a le plus de fuseaux horaires au monde ? La France !",
       "plans": [
         {
-          "recherche": "world map"
+          "recherche": "world map",
+          "fichier": "images/005-fuseaux-horaires/scene01_1.jpg"
         },
         {
-          "recherche": "eiffel tower night"
+          "recherche": "eiffel tower night",
+          "fichier": "images/005-fuseaux-horaires/scene01_2.jpg"
         },
         {
-          "recherche": "clocks"
+          "recherche": "clocks",
+          "fichier": "images/005-fuseaux-horaires/scene01_3.jpg"
         }
       ],
       "gros": {
@@ -40,13 +43,16 @@
       "vo": "Ni la Russie, ni les États-Unis. Grâce à l'outre-mer, elle en compte douze.",
       "plans": [
         {
-          "recherche": "russia moscow"
+          "recherche": "russia moscow",
+          "fichier": "images/005-fuseaux-horaires/scene02_1.jpg"
         },
         {
-          "recherche": "tahiti beach"
+          "recherche": "tahiti beach",
+          "fichier": "images/005-fuseaux-horaires/scene02_2.jpg"
         },
         {
-          "recherche": "reunion island"
+          "recherche": "reunion island",
+          "fichier": "images/005-fuseaux-horaires/scene02_3.jpg"
         }
       ],
       "gros": {
@@ -58,10 +64,12 @@
       "vo": "Quand il est midi à Paris en hiver, il est une heure du matin à Tahiti…",
       "plans": [
         {
-          "recherche": "paris street day"
+          "recherche": "paris street day",
+          "fichier": "images/005-fuseaux-horaires/scene03_1.jpg"
         },
         {
-          "recherche": "tahiti night"
+          "recherche": "tahiti night",
+          "fichier": "images/005-fuseaux-horaires/scene03_2.jpg"
         }
       ],
       "gros": {
@@ -74,10 +82,12 @@
       "vo": "… et déjà dix heures du soir en Nouvelle-Calédonie.",
       "plans": [
         {
-          "recherche": "new caledonia lagoon"
+          "recherche": "new caledonia lagoon",
+          "fichier": "images/005-fuseaux-horaires/scene04_1.jpg"
         },
         {
-          "recherche": "sunset tropical"
+          "recherche": "sunset tropical",
+          "fichier": "images/005-fuseaux-horaires/scene04_2.jpg"
         }
       ]
     },
@@ -85,9 +95,11 @@
       "vo": "Abonne-toi : un fait fou chaque jour.",
       "plans": [
         {
-          "recherche": "globe earth"
+          "recherche": "globe earth",
+          "fichier": "images/005-fuseaux-horaires/scene05_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/005-fuseaux-horaires.mp4"
 }
