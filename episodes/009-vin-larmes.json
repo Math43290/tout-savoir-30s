@@ -17,19 +17,22 @@
     "https://en.wikipedia.org/wiki/Tears_of_wine",
     "https://www.decanter.com/learn/advice/do-wine-legs-mean-a-better-wine-ask-decanter-376032/"
   ],
-  "statut": "à refaire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Les « larmes » qui coulent sur ton verre de vin ? Ça ne veut pas dire qu'il est bon.",
       "plans": [
         {
-          "recherche": "red wine glass"
+          "recherche": "red wine glass",
+          "fichier": "images/009-vin-larmes/scene01_1.jpg"
         },
         {
-          "recherche": "wine glass swirl"
+          "recherche": "wine glass swirl",
+          "fichier": "images/009-vin-larmes/scene01_2.jpg"
         },
         {
-          "recherche": "wine glass close up"
+          "recherche": "wine glass close up",
+          "fichier": "images/009-vin-larmes/scene01_3.jpg"
         }
       ],
       "gros": {
@@ -42,10 +45,12 @@
       "vo": "Ces gouttes viennent surtout de l'alcool.",
       "plans": [
         {
-          "recherche": "wine glass macro"
+          "recherche": "wine glass macro",
+          "fichier": "images/009-vin-larmes/scene02_1.jpg"
         },
         {
-          "recherche": "red wine pouring"
+          "recherche": "red wine pouring",
+          "fichier": "images/009-vin-larmes/scene02_2.jpg"
         }
       ],
       "gros": {
@@ -57,13 +62,16 @@
       "vo": "L'alcool s'évapore plus vite que l'eau, et ça fait grimper le vin le long du verre.",
       "plans": [
         {
-          "recherche": "wine glass light"
+          "recherche": "wine glass light",
+          "fichier": "images/009-vin-larmes/scene03_1.jpg"
         },
         {
-          "recherche": "wine glass reflection"
+          "recherche": "wine glass reflection",
+          "fichier": "images/009-vin-larmes/scene03_2.jpg"
         },
         {
-          "recherche": "glass of wine table"
+          "recherche": "glass of wine table",
+          "fichier": "images/009-vin-larmes/scene03_3.jpg"
         }
       ]
     },
@@ -71,10 +79,12 @@
       "vo": "Puis la gravité le fait redescendre en petites larmes : c'est l'effet Marangoni.",
       "plans": [
         {
-          "recherche": "wine drops glass"
+          "recherche": "wine drops glass",
+          "fichier": "images/009-vin-larmes/scene04_1.jpg"
         },
         {
-          "recherche": "red wine glass dark"
+          "recherche": "red wine glass dark",
+          "fichier": "images/009-vin-larmes/scene04_2.jpg"
         }
       ],
       "gros": {
@@ -87,10 +97,12 @@
       "vo": "Beaucoup de larmes ? Le vin est plus fort en alcool. Pas meilleur !",
       "plans": [
         {
-          "recherche": "vineyard"
+          "recherche": "vineyard",
+          "fichier": "images/009-vin-larmes/scene05_1.jpg"
         },
         {
-          "recherche": "wine tasting"
+          "recherche": "wine tasting",
+          "fichier": "images/009-vin-larmes/scene05_2.jpg"
         }
       ],
       "gros": {
@@ -103,9 +115,11 @@
       "vo": "Abonne-toi : un fait fou chaque jour.",
       "plans": [
         {
-          "recherche": "wine glasses sunset"
+          "recherche": "wine glasses sunset",
+          "fichier": "images/009-vin-larmes/scene06_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/009-vin-larmes.mp4"
 }
