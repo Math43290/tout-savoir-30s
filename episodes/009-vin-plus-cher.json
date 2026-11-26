@@ -17,19 +17,22 @@
     "https://www.guinnessworldrecords.com/world-records/544299-most-expensive-wine-sold-at-auction",
     "https://www.decanter.com/wine-news/1945-drc-wine-auction-record-403025/"
   ],
-  "statut": "à refaire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Une seule bouteille de vin vendue cinq cent cinquante-huit mille dollars. Le record du monde.",
       "plans": [
         {
-          "recherche": "luxury red wine bottle"
+          "recherche": "luxury red wine bottle",
+          "fichier": "images/009-vin-plus-cher/scene01_1.jpg"
         },
         {
-          "recherche": "auction hammer"
+          "recherche": "auction hammer",
+          "fichier": "images/009-vin-plus-cher/scene01_2.jpg"
         },
         {
-          "recherche": "wine bottle dark"
+          "recherche": "wine bottle dark",
+          "fichier": "images/009-vin-plus-cher/scene01_3.jpg"
         }
       ],
       "gros": {
@@ -42,13 +45,16 @@
       "vo": "C'est une Romanée-Conti de 1945, un grand vin de Bourgogne.",
       "plans": [
         {
-          "recherche": "burgundy vineyard"
+          "recherche": "burgundy vineyard",
+          "fichier": "images/009-vin-plus-cher/scene02_1.jpg"
         },
         {
-          "recherche": "vineyard france village"
+          "recherche": "vineyard france village",
+          "fichier": "images/009-vin-plus-cher/scene02_2.jpg"
         },
         {
-          "recherche": "old wine cellar"
+          "recherche": "old wine cellar",
+          "fichier": "images/009-vin-plus-cher/scene02_3.jpg"
         }
       ],
       "gros": {
@@ -61,10 +67,12 @@
       "vo": "Cette année-là, le domaine n'en a produit que six cents bouteilles.",
       "plans": [
         {
-          "recherche": "wine bottles row"
+          "recherche": "wine bottles row",
+          "fichier": "images/009-vin-plus-cher/scene03_1.jpg"
         },
         {
-          "recherche": "grape harvest"
+          "recherche": "grape harvest",
+          "fichier": "images/009-vin-plus-cher/scene03_2.jpg"
         }
       ],
       "gros": {
@@ -77,13 +85,16 @@
       "vo": "Juste après, ses vieilles vignes ont été arrachées pour être replantées.",
       "plans": [
         {
-          "recherche": "old grape vines"
+          "recherche": "old grape vines",
+          "fichier": "images/009-vin-plus-cher/scene04_1.jpg"
         },
         {
-          "recherche": "vineyard winter"
+          "recherche": "vineyard winter",
+          "fichier": "images/009-vin-plus-cher/scene04_2.jpg"
         },
         {
-          "recherche": "vineyard rows"
+          "recherche": "vineyard rows",
+          "fichier": "images/009-vin-plus-cher/scene04_3.jpg"
         }
       ]
     },
@@ -91,10 +102,12 @@
       "vo": "Estimée à trente-deux mille dollars, elle est partie dix-sept fois plus cher !",
       "plans": [
         {
-          "recherche": "auction room"
+          "recherche": "auction room",
+          "fichier": "images/009-vin-plus-cher/scene05_1.jpg"
         },
         {
-          "recherche": "money dollars"
+          "recherche": "money dollars",
+          "fichier": "images/009-vin-plus-cher/scene05_2.jpg"
         }
       ],
       "gros": {
@@ -107,9 +120,11 @@
       "vo": "Abonne-toi : un fait fou chaque jour.",
       "plans": [
         {
-          "recherche": "red wine glass"
+          "recherche": "red wine glass",
+          "fichier": "images/009-vin-plus-cher/scene06_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/009-vin-plus-cher.mp4"
 }
