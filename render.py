@@ -761,6 +761,10 @@ def draw_sticker(c, text, cx, cy, t, start, size=74, fill=YEL, ink=(0, 0, 0), ro
     bounce = 1 + 0.18 * math.sin(clamp((t - start) / 0.22) * math.pi) if t - start < 0.22 else 1
     f = skia.Font(SANS_B, size)
     tw = f.measureText(text)
+    if tw + size * 0.84 > W - 110:                 # trop long : on réduit pour tenir dans l'écran
+        size *= (W - 110) / (tw + size * 0.84)
+        f = skia.Font(SANS_B, size)
+        tw = f.measureText(text)
     pad_x, pad_y = size * 0.42, size * 0.30
     c.save()
     c.translate(cx, cy)
