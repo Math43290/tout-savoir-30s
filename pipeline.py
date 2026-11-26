@@ -11,7 +11,7 @@ Statuts : à faire -> à valider -> validé/publié ; « à refaire » repasse e
 import datetime as dt, glob, json, os, sys
 from zoneinfo import ZoneInfo
 
-MAX_EN_ATTENTE = 3          # pas plus de 3 vidéos en attente de validation
+MAX_EN_ATTENTE = 5          # pas plus de 3 vidéos en attente de validation
 HEURE_PUBLICATION = (21, 0)     # tous les soirs à 21 h (heure de Paris)
 
 

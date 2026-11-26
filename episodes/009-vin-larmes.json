@@ -1,0 +1,111 @@
+{
+  "id": "009-vin-larmes",
+  "numero": 9,
+  "categorie": "Vin",
+  "style": "dynamique",
+  "accroche": "VIN : LE SAVIEZ-VOUS ?",
+  "titre": "Les larmes du vin ne disent pas s'il est bon",
+  "legende": "Tu crois que les « larmes » sur ton verre prouvent qu'un vin est bon ? 🍷 Raté.",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#vin",
+    "#oenologie",
+    "#apprendresurtiktok"
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Tears_of_wine",
+    "https://www.decanter.com/learn/advice/do-wine-legs-mean-a-better-wine-ask-decanter-376032/"
+  ],
+  "statut": "à refaire",
+  "scenes": [
+    {
+      "vo": "Les « larmes » qui coulent sur ton verre de vin ? Ça ne veut pas dire qu'il est bon.",
+      "plans": [
+        {
+          "recherche": "red wine glass"
+        },
+        {
+          "recherche": "wine glass swirl"
+        },
+        {
+          "recherche": "wine glass close up"
+        }
+      ],
+      "gros": {
+        "texte": "IDÉE REÇUE",
+        "at": "bon",
+        "taille": 100
+      }
+    },
+    {
+      "vo": "Ces gouttes viennent surtout de l'alcool.",
+      "plans": [
+        {
+          "recherche": "wine glass macro"
+        },
+        {
+          "recherche": "red wine pouring"
+        }
+      ],
+      "gros": {
+        "texte": "ALCOOL",
+        "at": "alcool"
+      }
+    },
+    {
+      "vo": "L'alcool s'évapore plus vite que l'eau, et ça fait grimper le vin le long du verre.",
+      "plans": [
+        {
+          "recherche": "wine glass light"
+        },
+        {
+          "recherche": "wine glass reflection"
+        },
+        {
+          "recherche": "glass of wine table"
+        }
+      ]
+    },
+    {
+      "vo": "Puis la gravité le fait redescendre en petites larmes : c'est l'effet Marangoni.",
+      "plans": [
+        {
+          "recherche": "wine drops glass"
+        },
+        {
+          "recherche": "red wine glass dark"
+        }
+      ],
+      "gros": {
+        "texte": "EFFET MARANGONI",
+        "at": "Marangoni",
+        "taille": 86
+      }
+    },
+    {
+      "vo": "Beaucoup de larmes ? Le vin est plus fort en alcool. Pas meilleur !",
+      "plans": [
+        {
+          "recherche": "vineyard"
+        },
+        {
+          "recherche": "wine tasting"
+        }
+      ],
+      "gros": {
+        "texte": "PAS MEILLEUR",
+        "at": "meilleur",
+        "taille": 100
+      }
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "wine glasses sunset"
+        }
+      ]
+    }
+  ]
+}
