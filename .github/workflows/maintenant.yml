@@ -1,0 +1,22 @@
+name: Publier tout de suite (avancer un post programmé)
+on:
+  workflow_dispatch:
+    inputs:
+      episode:
+        description: "Identifiant de l'épisode (ex. 009-vin-plus-cher)"
+        required: true
+permissions:
+  contents: read
+jobs:
+  maintenant:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Avancer la publication
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          EPISODE: ${{ inputs.episode }}
+        run: |
+          URL="https://${GITHUB_REPOSITORY_OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/$EPISODE.mp4"
+          python3 buffer_maintenant.py "episodes/$EPISODE.json" --url "$URL"
