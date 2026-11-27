@@ -1,0 +1,147 @@
+{
+  "id": "011-formes-bouteilles",
+  "numero": 11,
+  "categorie": "Vin",
+  "style": "dynamique",
+  "calme": true,
+  "accroche": "VIN : LE SAVIEZ-VOUS ?",
+  "vitesse": 1.0,
+  "expressivite": 0.3,
+  "volume_musique": 0.14,
+  "titre": "La forme d'une bouteille trahit le cépage",
+  "legende": "Bordelaise, bourguignonne, flûte d'Alsace : la forme de la bouteille te dit déjà quel cépage tu vas boire 🍷",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#vin",
+    "#cepage",
+    "#oenologie",
+    "#lesaviezvous"
+  ],
+  "sources": [
+    "https://www.vinatis.com/j-y-connais-rien-questions",
+    "https://www.vinsetmillesimes.com/en/blog/post/the-different-shapes-of-wine-bottles.html"
+  ],
+  "statut": "à refaire",
+  "scenes": [
+    {
+      "vo": "Tu peux deviner ce qu'il y a dans une bouteille de vin… rien qu'en regardant sa forme.",
+      "plans": [
+        {
+          "recherche": "wine bottles shelf"
+        }
+      ]
+    },
+    {
+      "vo": "La bordelaise, d'abord. Des épaules bien carrées, un corps droit.",
+      "plans": [
+        {
+          "recherche": "bordeaux wine bottle"
+        },
+        {
+          "recherche": "bordeaux chateau vineyard"
+        }
+      ],
+      "gros": {
+        "texte": "LA BORDELAISE",
+        "at": "bordelaise",
+        "taille": 100
+      }
+    },
+    {
+      "vo": "Ces épaules retiennent le dépôt quand on sert le vin. Dedans, on trouve surtout du cabernet sauvignon et du merlot.",
+      "plans": [
+        {
+          "recherche": "pouring red wine"
+        },
+        {
+          "recherche": "red grapes vine"
+        }
+      ],
+      "gros": {
+        "texte": "CABERNET, MERLOT",
+        "at": "cabernet",
+        "taille": 86
+      }
+    },
+    {
+      "vo": "La bourguignonne, ensuite. Les épaules tombent en douceur, le ventre est plus large.",
+      "plans": [
+        {
+          "recherche": "burgundy wine bottle"
+        },
+        {
+          "recherche": "burgundy vineyard"
+        }
+      ],
+      "gros": {
+        "texte": "LA BOURGUIGNONNE",
+        "at": "bourguignonne",
+        "taille": 90
+      }
+    },
+    {
+      "vo": "C'est la bouteille du pinot noir et du chardonnay. Partout dans le monde, ces deux cépages ont voyagé… avec elle.",
+      "plans": [
+        {
+          "recherche": "pinot noir grapes"
+        },
+        {
+          "recherche": "chardonnay grapes"
+        }
+      ],
+      "gros": {
+        "texte": "PINOT NOIR, CHARDONNAY",
+        "at": "pinot",
+        "taille": 74
+      }
+    },
+    {
+      "vo": "Et enfin, la flûte d'Alsace : longue, fine, élégante.",
+      "plans": [
+        {
+          "recherche": "alsace village colmar"
+        }
+      ],
+      "gros": {
+        "texte": "LA FLÛTE D'ALSACE",
+        "at": "flûte",
+        "taille": 90
+      }
+    },
+    {
+      "vo": "On y met le riesling ou le gewurztraminer. En Alsace, cette forme est même protégée par décret depuis 1955.",
+      "plans": [
+        {
+          "recherche": "white grapes vineyard"
+        },
+        {
+          "recherche": "alsace vineyard"
+        }
+      ],
+      "gros": {
+        "texte": "DEPUIS 1955",
+        "at": "1955",
+        "taille": 110
+      }
+    },
+    {
+      "vo": "Alors la prochaine fois, regarde les épaules de la bouteille… elles parlent avant l'étiquette.",
+      "plans": [
+        {
+          "recherche": "wine cellar bottles"
+        },
+        {
+          "recherche": "wine shop shelf"
+        }
+      ]
+    },
+    {
+      "vo": "Abonne-toi pour tout savoir sur le vin.",
+      "plans": [
+        {
+          "recherche": "red wine glass vineyard"
+        }
+      ]
+    }
+  ]
+}

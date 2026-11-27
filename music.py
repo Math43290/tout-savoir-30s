@@ -78,7 +78,9 @@ def boom():
     return np.sin(2 * np.pi * np.cumsum(f) / SR) * _env(n, 0.003, 0.45) * 0.8
 
 
-def make(total, cuts, path, bpm=124, seed=3):
+def make(total, cuts, path, bpm=124, seed=3, calme=False):
+    if calme:
+        bpm = 96
     rng = np.random.default_rng(seed)
     n = int((total + 0.5) * SR)
     mus = np.zeros(n)
@@ -105,7 +107,7 @@ def make(total, cuts, path, bpm=124, seed=3):
     # entrée : 1 temps de musique filtrée puis tout part (le « drop » tombe sur l'accroche)
     W = whoosh(rng)
     for c in cuts:
-        _add(fx, W * 0.35, max(0, c - 0.3))
+        _add(fx, W * (0.12 if calme else 0.35), max(0, c - 0.3))
     _add(fx, boom(), 0.0)
     # fin : fondu de 1 s
     f = int(1.0 * SR)

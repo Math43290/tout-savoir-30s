@@ -692,8 +692,9 @@ def draw_plans(c, sc, t, gidx):
     path = p["fichier"] if os.path.isabs(p["fichier"]) else os.path.join(sc["base_dir"], p["fichier"])
     img = load_vivid(path)
     n = gidx + k                                   # alterne les mouvements d'un plan à l'autre
-    punch = 0.14 * (1 - ease_out(prog(lt, 0, 0.32)))
-    drift = 0.06 * clamp(lt / seg)
+    calme = sc.get("calme")
+    punch = (0.03 if calme else 0.14) * (1 - ease_out(prog(lt, 0, 0.6 if calme else 0.32)))
+    drift = (0.08 if calme else 0.06) * (0.5 - 0.5 * math.cos(math.pi * clamp(lt / seg))) if calme else 0.06 * clamp(lt / seg)
     z = 1.0 + punch + (drift if n % 2 == 0 else 0.06 - drift)
     dirx = (-1, 1, 0, 0)[n % 4]
     diry = (0, 0, -1, 1)[n % 4]
@@ -710,7 +711,9 @@ def draw_plans(c, sc, t, gidx):
                                                                 skia.Color(0, 0, 0, int(255 * cb))])
         c.drawRect(skia.Rect(0, y0, W, y1), skia.Paint(Shader=sh))
     # flash blanc à la coupe
-    if lt < 0.12 and not (k == 0 and sc["index"] == 0):
+    if calme and lt < 0.4 and not (k == 0 and sc["index"] == 0):   # fondu doux au lieu du flash
+        c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Color=skia.Color(0, 0, 0, int(120 * (1 - lt / 0.4)))))
+    elif not calme and lt < 0.12 and not (k == 0 and sc["index"] == 0):
         c.drawRect(skia.Rect(0, 0, W, H), skia.Paint(Color=skia.Color(255, 255, 255, int(150 * (1 - lt / 0.12)))))
 
 
@@ -821,7 +824,7 @@ def build_timeline(ep, voice_dir=None, base_dir="."):
         scenes.append({"index": i, "start": T, "dur": dur, "words": words, "elements": sc.get("elements", []),
                        "image": sc.get("image"), "base_dir": base_dir, "style": ep.get("style"),
                        "plans": sc.get("plans"), "gros": sc.get("gros"), "accroche": ep.get("accroche"),
-                       "plan_offset": off, "last": i == len(ep["scenes"]) - 1})
+                       "plan_offset": off, "calme": ep.get("calme"), "last": i == len(ep["scenes"]) - 1})
         off += len(sc.get("plans") or [])
         T += dur
     return scenes, T
@@ -930,7 +933,7 @@ def main():
         wav = os.path.join(outdir, "musique.wav")
         custom = os.path.join(HERE, "musique", f"{ep.get('musique')}.mp3") if isinstance(ep.get("musique"), str) else None
         if not (custom and os.path.exists(custom)):
-            music.make(total, cuts, wav)
+            music.make(total, cuts, wav, calme=bool(ep.get("calme")))
             custom = wav
         vol = str(ep.get("volume_musique", 0.22))
         inputs = ["-i", silent] + (["-i", audio] if audio and os.path.exists(audio) else []) + ["-i", custom]

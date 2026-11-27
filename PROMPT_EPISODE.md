@@ -7,7 +7,9 @@ Tous les nouveaux épisodes utilisent `"style": "dynamique"` (voir episodes/002-
 - **Une thématique différente chaque jour**, jamais deux fois de suite la même : tourner entre Vin, Histoire,
   Animaux, Corps humain, Espace, Géographie, Cuisine, Sciences, Sport, Art (champ `categorie`).
 - **Phrase 1 = l'accroche** : le fait le plus fou en une phrase, tout de suite. Jamais d'introduction.
-- **Format long (par défaut)** : une histoire de France choc racontée comme un récit (tension, rebondissement,
+- **Thème favori : le vin** (cépages, bouteilles, régions, records). Rythme posé : `"calme": true`, 1 ou 2 plans par
+  scène (une photo toutes les ~4–5 s).
+- **Format long (par défaut)** : une histoire racontée comme un récit (tension, rebondissement,
   chute), 9–11 scènes, 160–180 mots (~1 min), `"vitesse": 1.0`, `"expressivite": 0.35`, `"volume_musique": 0.16`,
   3 ou 4 plans par scène.
 - Format court (si demandé) : 5 à 6 scènes, 60–70 mots, **420 caractères maximum**, dernière scène : « Abonne-toi : un fait fou chaque jour. »
