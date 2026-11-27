@@ -21,13 +21,14 @@
     "https://www.vinatis.com/j-y-connais-rien-questions",
     "https://www.vinsetmillesimes.com/en/blog/post/the-different-shapes-of-wine-bottles.html"
   ],
-  "statut": "à refaire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Tu peux deviner ce qu'il y a dans une bouteille de vin… rien qu'en regardant sa forme.",
       "plans": [
         {
-          "recherche": "wine bottles shelf"
+          "recherche": "wine bottles shelf",
+          "fichier": "images/011-formes-bouteilles/scene01_1.jpg"
         }
       ]
     },
@@ -35,10 +36,12 @@
       "vo": "La bordelaise, d'abord. Des épaules bien carrées, un corps droit.",
       "plans": [
         {
-          "recherche": "bordeaux wine bottle"
+          "recherche": "bordeaux wine bottle",
+          "fichier": "images/011-formes-bouteilles/scene02_1.jpg"
         },
         {
-          "recherche": "bordeaux chateau vineyard"
+          "recherche": "bordeaux chateau vineyard",
+          "fichier": "images/011-formes-bouteilles/scene02_2.jpg"
         }
       ],
       "gros": {
@@ -51,10 +54,12 @@
       "vo": "Ces épaules retiennent le dépôt quand on sert le vin. Dedans, on trouve surtout du cabernet sauvignon et du merlot.",
       "plans": [
         {
-          "recherche": "pouring red wine"
+          "recherche": "pouring red wine",
+          "fichier": "images/011-formes-bouteilles/scene03_1.jpg"
         },
         {
-          "recherche": "red grapes vine"
+          "recherche": "red grapes vine",
+          "fichier": "images/011-formes-bouteilles/scene03_2.jpg"
         }
       ],
       "gros": {
@@ -67,10 +72,12 @@
       "vo": "La bourguignonne, ensuite. Les épaules tombent en douceur, le ventre est plus large.",
       "plans": [
         {
-          "recherche": "burgundy wine bottle"
+          "recherche": "burgundy wine bottle",
+          "fichier": "images/011-formes-bouteilles/scene04_1.jpg"
         },
         {
-          "recherche": "burgundy vineyard"
+          "recherche": "burgundy vineyard",
+          "fichier": "images/011-formes-bouteilles/scene04_2.jpg"
         }
       ],
       "gros": {
@@ -83,10 +90,12 @@
       "vo": "C'est la bouteille du pinot noir et du chardonnay. Partout dans le monde, ces deux cépages ont voyagé… avec elle.",
       "plans": [
         {
-          "recherche": "pinot noir grapes"
+          "recherche": "pinot noir grapes",
+          "fichier": "images/011-formes-bouteilles/scene05_1.jpg"
         },
         {
-          "recherche": "chardonnay grapes"
+          "recherche": "chardonnay grapes",
+          "fichier": "images/011-formes-bouteilles/scene05_2.jpg"
         }
       ],
       "gros": {
@@ -99,7 +108,8 @@
       "vo": "Et enfin, la flûte d'Alsace : longue, fine, élégante.",
       "plans": [
         {
-          "recherche": "alsace village colmar"
+          "recherche": "alsace village colmar",
+          "fichier": "images/011-formes-bouteilles/scene06_1.jpg"
         }
       ],
       "gros": {
@@ -112,10 +122,12 @@
       "vo": "On y met le riesling ou le gewurztraminer. En Alsace, cette forme est même protégée par décret depuis 1955.",
       "plans": [
         {
-          "recherche": "white grapes vineyard"
+          "recherche": "white grapes vineyard",
+          "fichier": "images/011-formes-bouteilles/scene07_1.jpg"
         },
         {
-          "recherche": "alsace vineyard"
+          "recherche": "alsace vineyard",
+          "fichier": "images/011-formes-bouteilles/scene07_2.jpg"
         }
       ],
       "gros": {
@@ -128,10 +140,12 @@
       "vo": "Alors la prochaine fois, regarde les épaules de la bouteille… elles parlent avant l'étiquette.",
       "plans": [
         {
-          "recherche": "wine cellar bottles"
+          "recherche": "wine cellar bottles",
+          "fichier": "images/011-formes-bouteilles/scene08_1.jpg"
         },
         {
-          "recherche": "wine shop shelf"
+          "recherche": "wine shop shelf",
+          "fichier": "images/011-formes-bouteilles/scene08_2.jpg"
         }
       ]
     },
@@ -139,9 +153,11 @@
       "vo": "Abonne-toi pour tout savoir sur le vin.",
       "plans": [
         {
-          "recherche": "red wine glass vineyard"
+          "recherche": "red wine glass vineyard",
+          "fichier": "images/011-formes-bouteilles/scene09_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/011-formes-bouteilles.mp4"
 }
