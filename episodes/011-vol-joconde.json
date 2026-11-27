@@ -1,0 +1,190 @@
+{
+  "id": "011-vol-joconde",
+  "numero": 11,
+  "categorie": "Histoire de France",
+  "style": "dynamique",
+  "accroche": "HISTOIRE CHOC",
+  "vitesse": 1.0,
+  "expressivite": 0.35,
+  "volume_musique": 0.16,
+  "titre": "Le jour où on a volé la Joconde",
+  "legende": "1911 : la Joconde disparaît du Louvre… et Picasso est suspecté 😳🖼️",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#histoiredefrance",
+    "#joconde",
+    "#louvre",
+    "#histoire"
+  ],
+  "sources": [
+    "https://www.herodote.net/21_aout_1911-evenement-19110821.php",
+    "https://www.history.com/news/the-heist-that-made-the-mona-lisa-famous"
+  ],
+  "statut": "à refaire",
+  "scenes": [
+    {
+      "vo": "En 1911, quelqu'un a volé la Joconde, au Louvre. Et pendant deux ans, personne ne l'a retrouvée.",
+      "plans": [
+        {
+          "recherche": "mona lisa"
+        },
+        {
+          "recherche": "louvre museum"
+        },
+        {
+          "recherche": "louvre night"
+        }
+      ],
+      "gros": {
+        "texte": "1911",
+        "at": "1911",
+        "taille": 150
+      }
+    },
+    {
+      "vo": "Le 21 août, le musée est fermé. Un homme en blouse blanche décroche le tableau, retire le cadre et la vitre…",
+      "plans": [
+        {
+          "recherche": "museum corridor"
+        },
+        {
+          "recherche": "old painting frame"
+        },
+        {
+          "recherche": "empty museum hall"
+        }
+      ]
+    },
+    {
+      "vo": "… cache la Joconde sous sa blouse, et sort tranquillement du musée.",
+      "plans": [
+        {
+          "recherche": "museum door"
+        },
+        {
+          "recherche": "old paris street"
+        },
+        {
+          "recherche": "paris vintage"
+        }
+      ]
+    },
+    {
+      "vo": "Le lendemain, un peintre arrive pour la copier. À sa place : un mur vide.",
+      "plans": [
+        {
+          "recherche": "painter easel"
+        },
+        {
+          "recherche": "empty wall museum"
+        }
+      ],
+      "gros": {
+        "texte": "MUR VIDE",
+        "at": "vide"
+      }
+    },
+    {
+      "vo": "Panique dans tout le pays. La police soupçonne même le poète Apollinaire, jeté en prison… et un jeune peintre nommé Pablo Picasso.",
+      "plans": [
+        {
+          "recherche": "police vintage"
+        },
+        {
+          "recherche": "prison bars"
+        },
+        {
+          "recherche": "montmartre paris"
+        },
+        {
+          "recherche": "painter studio"
+        }
+      ],
+      "gros": {
+        "texte": "PICASSO SUSPECT",
+        "at": "Picasso",
+        "taille": 96
+      }
+    },
+    {
+      "vo": "Le vrai voleur ? Vincenzo Peruggia, un vitrier italien qui avait travaillé au Louvre.",
+      "plans": [
+        {
+          "recherche": "glass workshop"
+        },
+        {
+          "recherche": "vintage man portrait"
+        },
+        {
+          "recherche": "louvre gallery"
+        }
+      ],
+      "gros": {
+        "texte": "UN VITRIER",
+        "at": "vitrier"
+      }
+    },
+    {
+      "vo": "Pendant deux ans, il garde le tableau le plus célèbre du monde… caché dans sa chambre, à Paris.",
+      "plans": [
+        {
+          "recherche": "old bedroom"
+        },
+        {
+          "recherche": "wooden trunk"
+        },
+        {
+          "recherche": "paris rooftops"
+        }
+      ],
+      "gros": {
+        "texte": "2 ANS",
+        "at": "ans",
+        "taille": 150
+      }
+    },
+    {
+      "vo": "En 1913, il essaie de le vendre à un antiquaire de Florence. Piège : il est arrêté.",
+      "plans": [
+        {
+          "recherche": "florence italy"
+        },
+        {
+          "recherche": "ponte vecchio"
+        },
+        {
+          "recherche": "handcuffs"
+        }
+      ],
+      "gros": {
+        "texte": "ARRÊTÉ",
+        "at": "arrêté",
+        "taille": 130
+      }
+    },
+    {
+      "vo": "Et le plus fou ? C'est ce vol qui a rendu la Joconde célèbre dans le monde entier.",
+      "plans": [
+        {
+          "recherche": "crowd museum"
+        },
+        {
+          "recherche": "mona lisa painting"
+        }
+      ],
+      "gros": {
+        "texte": "STAR MONDIALE",
+        "at": "célèbre",
+        "taille": 100
+      }
+    },
+    {
+      "vo": "Abonne-toi pour une histoire choc chaque jour.",
+      "plans": [
+        {
+          "recherche": "paris night seine"
+        }
+      ]
+    }
+  ]
+}
