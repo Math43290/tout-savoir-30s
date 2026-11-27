@@ -1,0 +1,116 @@
+{
+  "id": "010-venus",
+  "numero": 10,
+  "categorie": "Espace",
+  "style": "dynamique",
+  "accroche": "ESPACE : LE SAVIEZ-VOUS ?",
+  "titre": "Sur Vénus, un jour dure plus qu'un an",
+  "legende": "Sur Vénus, ton anniversaire arriverait avant la fin de la journée 🪐🤯",
+  "hashtags": [
+    "#toutsavoiren30s",
+    "#lesaviezvous",
+    "#espace",
+    "#venus",
+    "#astronomie"
+  ],
+  "sources": [
+    "https://science.nasa.gov/venus/facts",
+    "https://spaceplace.nasa.gov/all-about-venus/"
+  ],
+  "statut": "à refaire",
+  "scenes": [
+    {
+      "vo": "Sur Vénus, une journée dure plus longtemps qu'une année entière.",
+      "plans": [
+        {
+          "recherche": "venus planet"
+        },
+        {
+          "recherche": "planet space"
+        },
+        {
+          "recherche": "solar system"
+        }
+      ],
+      "gros": {
+        "texte": "JOUR > ANNÉE",
+        "at": "année",
+        "taille": 110
+      }
+    },
+    {
+      "vo": "Elle met deux cent quarante-trois jours pour tourner sur elle-même…",
+      "plans": [
+        {
+          "recherche": "planet rotation space"
+        },
+        {
+          "recherche": "venus surface"
+        }
+      ],
+      "gros": {
+        "texte": "243 JOURS",
+        "at": "jours"
+      }
+    },
+    {
+      "vo": "… mais seulement deux cent vingt-cinq jours pour faire le tour du Soleil.",
+      "plans": [
+        {
+          "recherche": "sun space"
+        },
+        {
+          "recherche": "sun flare"
+        },
+        {
+          "recherche": "planet orbit sun"
+        }
+      ],
+      "gros": {
+        "texte": "225 JOURS",
+        "at": "Soleil"
+      }
+    },
+    {
+      "vo": "Et elle tourne à l'envers : là-bas, le Soleil se lève à l'ouest.",
+      "plans": [
+        {
+          "recherche": "sunrise"
+        },
+        {
+          "recherche": "sunset sky orange"
+        },
+        {
+          "recherche": "desert sunrise"
+        }
+      ],
+      "gros": {
+        "texte": "À L'ENVERS",
+        "at": "envers"
+      }
+    },
+    {
+      "vo": "Son sol tourne à peine plus vite qu'un piéton qui marche.",
+      "plans": [
+        {
+          "recherche": "person walking"
+        },
+        {
+          "recherche": "walking feet"
+        }
+      ],
+      "gros": {
+        "texte": "6,5 KM/H",
+        "at": "piéton"
+      }
+    },
+    {
+      "vo": "Abonne-toi : un fait fou chaque jour.",
+      "plans": [
+        {
+          "recherche": "starry night sky"
+        }
+      ]
+    }
+  ]
+}
