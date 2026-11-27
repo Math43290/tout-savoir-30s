@@ -17,19 +17,22 @@
     "https://science.nasa.gov/venus/facts",
     "https://spaceplace.nasa.gov/all-about-venus/"
   ],
-  "statut": "à refaire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Sur Vénus, une journée dure plus longtemps qu'une année entière.",
       "plans": [
         {
-          "recherche": "venus planet"
+          "recherche": "venus planet",
+          "fichier": "images/010-venus/scene01_1.jpg"
         },
         {
-          "recherche": "planet space"
+          "recherche": "planet space",
+          "fichier": "images/010-venus/scene01_2.jpg"
         },
         {
-          "recherche": "solar system"
+          "recherche": "solar system",
+          "fichier": "images/010-venus/scene01_3.jpg"
         }
       ],
       "gros": {
@@ -42,10 +45,12 @@
       "vo": "Elle met deux cent quarante-trois jours pour tourner sur elle-même…",
       "plans": [
         {
-          "recherche": "planet rotation space"
+          "recherche": "planet rotation space",
+          "fichier": "images/010-venus/scene02_1.jpg"
         },
         {
-          "recherche": "venus surface"
+          "recherche": "venus surface",
+          "fichier": "images/010-venus/scene02_2.jpg"
         }
       ],
       "gros": {
@@ -57,13 +62,16 @@
       "vo": "… mais seulement deux cent vingt-cinq jours pour faire le tour du Soleil.",
       "plans": [
         {
-          "recherche": "sun space"
+          "recherche": "sun space",
+          "fichier": "images/010-venus/scene03_1.jpg"
         },
         {
-          "recherche": "sun flare"
+          "recherche": "sun flare",
+          "fichier": "images/010-venus/scene03_2.jpg"
         },
         {
-          "recherche": "planet orbit sun"
+          "recherche": "planet orbit sun",
+          "fichier": "images/010-venus/scene03_3.jpg"
         }
       ],
       "gros": {
@@ -75,13 +83,16 @@
       "vo": "Et elle tourne à l'envers : là-bas, le Soleil se lève à l'ouest.",
       "plans": [
         {
-          "recherche": "sunrise"
+          "recherche": "sunrise",
+          "fichier": "images/010-venus/scene04_1.jpg"
         },
         {
-          "recherche": "sunset sky orange"
+          "recherche": "sunset sky orange",
+          "fichier": "images/010-venus/scene04_2.jpg"
         },
         {
-          "recherche": "desert sunrise"
+          "recherche": "desert sunrise",
+          "fichier": "images/010-venus/scene04_3.jpg"
         }
       ],
       "gros": {
@@ -93,10 +104,12 @@
       "vo": "Son sol tourne à peine plus vite qu'un piéton qui marche.",
       "plans": [
         {
-          "recherche": "person walking"
+          "recherche": "person walking",
+          "fichier": "images/010-venus/scene05_1.jpg"
         },
         {
-          "recherche": "walking feet"
+          "recherche": "walking feet",
+          "fichier": "images/010-venus/scene05_2.jpg"
         }
       ],
       "gros": {
@@ -108,9 +121,11 @@
       "vo": "Abonne-toi : un fait fou chaque jour.",
       "plans": [
         {
-          "recherche": "starry night sky"
+          "recherche": "starry night sky",
+          "fichier": "images/010-venus/scene06_1.jpg"
         }
       ]
     }
-  ]
+  ],
+  "video_url": "https://math43290.github.io/tout-savoir-30s/010-venus.mp4"
 }
