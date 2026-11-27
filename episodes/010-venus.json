@@ -17,7 +17,7 @@
     "https://science.nasa.gov/venus/facts",
     "https://spaceplace.nasa.gov/all-about-venus/"
   ],
-  "statut": "à refaire",
+  "statut": "à valider",
   "scenes": [
     {
       "vo": "Sur Vénus, une journée dure plus longtemps qu'une année entière.",
@@ -45,10 +45,12 @@
       "vo": "Elle met deux cent quarante-trois jours pour tourner sur elle-même…",
       "plans": [
         {
-          "recherche": "yellow planet"
+          "recherche": "yellow planet",
+          "fichier": "images/010-venus/scene02_1.jpg"
         },
         {
-          "recherche": "venus planet clouds"
+          "recherche": "venus planet clouds",
+          "fichier": "images/010-venus/scene02_2.jpg"
         }
       ],
       "gros": {
@@ -60,10 +62,12 @@
       "vo": "… mais seulement deux cent vingt-cinq jours pour faire le tour du Soleil.",
       "plans": [
         {
-          "recherche": "sun"
+          "recherche": "sun",
+          "fichier": "images/010-venus/scene03_1.jpg"
         },
         {
-          "recherche": "solar flare"
+          "recherche": "solar flare",
+          "fichier": "images/010-venus/scene03_2.jpg"
         },
         {
           "recherche": "planet orbit sun",
