@@ -28,6 +28,9 @@ def save(p, ep):
 
 def suivant():
     eps = list(episodes())
+    for p, e in eps:                    # une vidéo à refaire (demandée à la main) passe toujours
+        if e.get("statut") == "à refaire":
+            return p
     if sum(1 for _, e in eps if e.get("statut") == "à valider") >= MAX_EN_ATTENTE:
         return ""
     for wanted in ("à refaire", "à faire"):
